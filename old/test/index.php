@@ -1,5 +1,0 @@
-Kleine Testseite
-
-<?
-  phpinfo();
-?>
