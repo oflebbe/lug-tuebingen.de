@@ -1,0 +1,20 @@
+<H1>Ein neues Projekt</H1>
+
+<UL>
+<LI>Aus bestehendem Sourcecode mit
+<BR><EM>
+cvs import -d /pfad/zum/repository projektname user release
+</EM>
+</LI>
+<LI>Frisch mit
+<BR><EM>
+mkdir blubb; cd blubb
+</EM><BR>
+und Vorgehen wie oben
+</LI>
+<LI>Eine Arbeitskopie erstellen mit
+<BR><EM>
+cvs checkout -d /pfad/zum/repository projektname
+</EM>
+</LI>
+</UL>

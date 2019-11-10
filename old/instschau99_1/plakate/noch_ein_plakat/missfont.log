@@ -1,0 +1,2 @@
+mktexpk --mfmode ljfour --bdpi 600 --mag 16+0/600 --dpi 9600 unilogo
+mktexpk --mfmode ljfour --bdpi 600 --mag 16+0/600 --dpi 9600 unilogo

@@ -1,0 +1,5 @@
+<H1>Erzeugen eines neuen Repository</H1>
+
+<UL>
+<LI>cvs init -d /pfad/zum/repository</LI>
+</UL>

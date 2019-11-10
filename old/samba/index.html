@@ -1,0 +1,437 @@
+<HTML>
+<HEAD>
+<TITLE>SAMBA-Vortrag </TITLE>
+</HEAD>
+<BODY LINK="#0000ff">
+
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><FONT SIZE=7 COLOR="#000000"><P ALIGN="CENTER">SAMBA-Vortrag <BR>
+</FONT><FONT SIZE=2 COLOR="#000000">von Dienstag, 2. M&auml;rz 1999</P>
+</FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P><DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT SIZE=1 COLOR="#000000"><P ALIGN="CENTER">Dieses Dokument ist noch nicht fertig. Mehrere Punkte, die im Vortrag angesprochen wurden <BR>
+(Dom&auml;nenintegration, MS-Lizenzierungsmodelle etc.) fehlen noch. Es k&ouml;nnen sich auch Fehler aller Art im Dokument befinden.</P>
+<P ALIGN="CENTER">Alle Hinweise auf Fehler sowie konstruktive Kritik bitte an:</P>
+<P ALIGN="CENTER">stefan.arbeiter@student.uni-tuebingen.de</P>
+<P ALIGN="CENTER">Der Autor kann keinerlei Garantie f&uuml;r die Richtigkeit und Fehlerlosigkeit der vorgestellten Verfahren etc. &uuml;bernehmen – das Dokument wird mit der Absicht zur Verf&uuml;gung gestellt, da&szlig; es von Nutzen sein kann.</P>
+<P ALIGN="CENTER">Alle Warenzeichen in diesem Dokument sind Eigentum ihrer jeweiligen Besitzer <BR>
+(z.B. Microsoft von Microsoft Corporation). Der Begriff UNIX wird hier f&uuml;r alle Arten von Unix-Derivaten verwendet.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>&nbsp;</P></DIR>
+</DIR>
+</DIR>
+
+<P>0  Allgemein</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Das folgende Dokument bietet ein paar grundlegende Informationen zur SAMBA Konfiguration und Windows-Netzwerken, mit einem Schwerpunkt auf Browsing. In jedem Abschnitt werden die entsprechenden Links zur SAMBA-Dokumentation bzw. Microsoft Supportdatenbank angegeben. Das Dokument basiert auf einem Vortrag, der auf dem LINUX-User-Group-T&uuml;bingen Treffen im M&auml;rz gehalten wurde. Es sind Informationen/Korrekturen verschiedener LUGT-Mitglieder eingearbeitet worden!</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>1  Funktionsumfang</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">– Plattenplatz/Drucker als Windows-Freigaben (Shares) zur Verf&uuml;gung stellen.</P>
+<P ALIGN="JUSTIFY">– Innerhalb einer bestehenden NT-Domain kann SAMBA als Domain Member Server (entsprechend einem NT-Server) arbeiten.</P>
+<P ALIGN="JUSTIFY">– Die PDC-Funktionen (Unterst&uuml;tzung der SAM-Datenbank, Domain-Logon f&uuml;r NT-Workstation) werden zur Zeit zwar noch als experimentell eingestuft, arbeiten aber nach der Erfahrungen von LUG-Besuchern/Mitgliedern der SAMBA-Mailingliste zuverl&auml;ssig – die Unterst&uuml;tzung des NETLOGON-Dienstes (Anbieten von Logon-Skripten) wird Win 3.11/9x als stabil eingestuft</P>
+<P ALIGN="JUSTIFY">– Die Benutzerauthenfizierung kann zus&auml;tzlich zu /etc/passwd auch an NIS/NIS+, LDAP oder </FONT>MySQL-Datenbanken vorgenommen werden. Zus&auml;tzlich zu den bereits existierenden SAMBA-Konfigurationsutilities gibt es nun offiziell &quot;SWAT&quot;, eine recht &uuml;bersichtliche Webschnittstelle um smb.conf zu verwalten. Samba kann als einzelner WINS-Server (NetBIOS-Namesserver) arbeiten, aber nicht an der WINS-Replikation teilnehmen. Zus&auml;tzlich gibt es noch eine Reihe weitere Utilities/Funktionen (smbclient, smbtar, Magic Scripts etc.) die die Arbeit in NetBIOS-Netzwerken erheblich erleichtern k&ouml;nnen.</P>
+<B><FONT FACE="Futura Md BT" SIZE=5><P>2  Unterscheidung SAMBA/HOST-Betriebssystem</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Beim Beobachten der SAMBA-Mailingliste (http://de.samba.org/samba/archives.html) f&auml;llt gelegentlich auf, da&szlig; Fragen sich dadurch ergeben, da&szlig; nicht genau zwischen den F&auml;higkeiten von SAMBA (bzw. den Programmen smbd &amp; nmbd) und denen des jeweiligen Betriebssystems unterschieden wird, deswegen hier eine kleine &Uuml;bersicht :</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>2.1  Berechtigungen / Sicherheit</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Samba kann den Zugriff von Rechnern (IP-Adressen oder NetBIOS-Namen) auf einzelne Freigaben erlauben/verbieten sowie einzelnen User / Gruppen sperren. Dies betrifft zun&auml;chst nur einzelne Freigaben bzw. alle Freigaben eines SAMBA-Servers. F&uuml;r den Zugriff auf freigegebene Dateien und Verzeichnisse gelten allerdings die Berechtigungen des jeweiligen Dateissystems. &Uuml;ber SAMBA kann jeweils f&uuml;r eine Freigabe festgelegt werden, mit welchen &quot;Unix-Rechten&quot; Dateien/Verzeichnisse angelegt werden. Der festgelegte Wert gilt f&uuml;r die gesamte Freigabe, also auch alle freigegebenen Unterverzeichnisse. Die grundlegende Rechtevergabe/Manipulation mu&szlig; &uuml;ber das Betriebssystem des SAMBA-Servers erfolgen. </P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>2.2  Grundlegende Netzwerkfunktionalt</FONT><FONT FACE="Normal Text" SIZE=4>&auml;t</FONT><FONT FACE="Futura Md BT" SIZE=4>: HOST-Betriebssystem bieten</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Zum Betrieb von SAMBA ist ein funktionierender TCP/IP-Stack auf dem HOST bereits vorhanden sein, &uuml;ber SAMBA kann nur beeinflu&szlig;t werden, welche Netzkarten oder sonstige Interfaces benutzt werden sollen oder nicht. IP-Adresse, setzen der Routen etc. werden vom HOST &uuml;bernommen.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>2.3  Zeichens&auml;tze, die SAMBA verwenden kann, m</FONT><FONT FACE="Normal Text" SIZE=4>&uuml;</FONT><FONT FACE="Futura Md BT" SIZE=4>ssen vom Betriebssystem unterst</FONT><FONT FACE="Normal Text" SIZE=4>&uuml;</FONT><FONT FACE="Futura Md BT" SIZE=4>tzt werden</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Um z.B. Probleme mit deutschen Umlauten/kyrillischen Dateinamen etc. zu vermeiden, empfiehlt es sich, da&szlig; die jeweiligen Zeichens&auml;tze auch vom Betriebssystem unterst&uuml;tzt werden.</P>
+<P ALIGN="JUSTIFY">Unterst&uuml;tzte Codepages: 437 (USA), 737 (Greek), 850 (Western European) 852 (MS-DOS Latin 2), 861 (Icelandic), 866 (Cyrillic), 932 (Kanji SJIS), 936 (Simplified Chinese), 949 (Hangul) and 950 (Traditional Chinese). Stand: Samba 2.0.3</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>2.4  Sicherheitsaspekte: &quot;WINDOWS&quot; Sicherheit und &quot;Unix-Sicherheit&quot;</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">SAMBA selbst greift nicht in die &quot;Sicherheit&quot; des jeweiligen HOST-Betriebssystems ein, weswegen beide, &quot;Windows-Netzwerk&quot; Sicherheit und &quot;Unix-Sicherheit&quot; beachtet werden m&uuml;ssen. Die Sicherheit ist sowohl kompromittiert wenn von Unix-Seite aus auf die SAMBA-Konfigurations und – falls vorhanden – Pa&szlig;wortdateien zugegriffen werden kann als auch wenn SAMBA sicherheitsrelevante Dateien/Verzeichnisse des HOST-Betriebssystems offen zug&auml;nglich macht. Das Betreiben eines SAMBA-Servers kann deshalb in einem Unternehmen, in dem UNIX-, NT- und Clientadministration organisatorisch voneinander vollst&auml;ndig getrennt sind, recht interessant sein.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>2.5  Verf</FONT><FONT FACE="Normal Text" SIZE=4>&uuml;</FONT><FONT FACE="Futura Md BT" SIZE=4>gbarkeit von Druckern</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">SAMBA unterst&uuml;tzt mit Version 2.0.3 nur folgende Druck-Spoolingssysteme. (SYSV, PLP, LPD, AIX etc.). Es stellt Drucker allerdings nur innerhalb des Windows-Netzwerkes zur Verf&uuml;gung, deren Konfiguration / Verf&uuml;gbarkeit ist aber Sache des HOST-Betriebssystems.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>2.6  Vergleich SAMBA - Programme/NT-Dienste</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Die Funktionen von smbd/nmbd sind &quot;in etwa&quot; analog zu denen des Server/Computersuchdienstes. Allerdings &uuml;bernimmt nmbd zus&auml;tzlich die Funktion des WINS-Dienstes.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>3  Grundlagen der SAMBA-Installation</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Der erste Schritt ist jedenfalls, das jeweilige HOST-Betriebssystem im Netzwerk erreichbar zu machen. Die Erreichbarkeit des SAMBA-HOSTS sollte mit den g&auml;ngigen Utilities wie PING getestet werden. In der Regel sind Fehlermeldungen der Windows-Clients alleine nicht sonderlich hilfreich.</P>
+<P ALIGN="JUSTIFY">– Mit PING die Verf&uuml;gbarkeit des SAMBA-Hosts im IP-Netzwerk testen / pr&uuml;fen.</P>
+<P ALIGN="JUSTIFY">– Mit BING die Bandbreite/mit FTP die &Uuml;bertragungsgeschwindigkeit zwischen SAMBA-Hosts und zuk&uuml;nftigen Clients messen.</P>
+<P ALIGN="JUSTIFY">Mit letzterem erh&auml;lt man einen Richtwert, so da&szlig; man in etwa absch&auml;tzen kann, wie schnell &Uuml;bertragungen zwischen Clients und SAMBA &uuml;berhaupt sein k&ouml;nnen. Es gibt zahlreiche &quot;Tuning&quot; Parameter (z.B. socket Option in [global]), jedoch kann eine langsame &Uuml;bertragungsrate vollkommen andere Gr&uuml;nde haben :</P>
+<P ALIGN="JUSTIFY">– Netzwerkinfrastruktur: Grundlast hoch, &Uuml;berlastete Hubs, Router, Switches etc.</P>
+<P ALIGN="JUSTIFY">– Probleme mit der Netzkarte/Treibern auf dem HOST-Betriebssystem.</P>
+<P ALIGN="JUSTIFY">– Probleme mit der Netzkarte/Treibern auf den Clients.</P>
+<P ALIGN="JUSTIFY">Beispiel: Die &Uuml;bertragungsrate Client/SAMBA-Server in einem 10 M/Bit Netz betrug ca. 400 KB/s. Mit BING fand man heraus, da&szlig; im selben Subnetz zwischen anderen Rechnern die in etwa erwartete Bandbreite gemessen werden konnte, Messungen vom SAMBA-Server aus jedoch auf erheblich geringere Werte kamen. Das Problem lies sich durch neuere Treiber (3Com 3C509) l&ouml;sen. In einem anderen Fall gab es eine &auml;hnliche &Uuml;bertragungsraten von einem Windows 95 Client zum SAMBA-Server – hier lag jedoch fast dasselbe Problem beim Client vor. Bei der SAMBA-Installation oder einem Update sollte man auf jeden Fall TESTPARM einsetzen, um die SMB.CONF auf Syntaxfehler/nicht mehr unterst&uuml;tzte Werte zu pr&uuml;fen. Bei einem Update sollte man auf jedem Fall die alten SAMBA-Dateien nicht l&ouml;schen, sondern sich die Option eines Downgrades offen halten. Der Name des SAMBA-Hosts, der im Windows-Netzwerk verwendet werden soll, kann von seinem (DNS-)Namen abweichen. Aufgrund des Designs von NetBIOS sollte man allerdings nur numerische Namen nicht verwenden, da diese von manchen Programmen falsch/gar nicht ausgewertet werden.</P>
+<P ALIGN="JUSTIFY">Artikel in der Microsoft Supportdatenbank: Q190294</P>
+<P ALIGN="JUSTIFY">http://support.microsoft.com/support/kb/articles/q190/2/94.asp</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Zudem ist in einem NT-Netzwerk der nach dem Alphabet erste Server auch der Verwalter der Browse-List, die Server mit freigegebenen Druckern enth&auml;lt.</P>
+<P ALIGN="JUSTIFY">Mit smbclient -L SAMBA-Server schlie&szlig;lich kann man die Erreichbarkeit der SAMBA-Dienste vom Server aus testen. Ist &quot;localhost&quot; in der /etc/hosts angegeben, kann auch smbclient -L localhost angegeben werden. Um als nicht authentifizierter User von einem Client aus die Liste der Freigaben/Drucker zu erhalten mu&szlig; ein funktionierender guest account [global] in der smb.conf angegeben werden. (Negative UIDs sind nicht erlaubt.). Treten hierbei Probleme auf, helfen die Logdateien log.smb bzw. log.nmb weiter, das Problem zu l&ouml;sen.</P>
+<P ALIGN="JUSTIFY">Siehe http://de.samba.org/samba/ftp/docs/textdocs/DIAGNOSIS.txt</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Rechner, die als Router f&uuml;r W&auml;hlleitungen bzw. Internet-Router dienen, oder als Firewall innerhalb eines WAN arbeiten, empfiehlt es sich, &uuml;ber folgende Parameter zu steuern, ob SAMBA alle Netzinterfaces benutzen soll – im Falle eines LINUX-Rechners mit ISDN-Karte, der als Masquerading-Gateway ins Internet dient, w&uuml;rde ansonsten die Leitung regelm&auml;&szlig;ig hochgehen, da nmbd auch auf der &quot;Seite&quot; der ISDN-Karte nach anderen Master-Browsern sucht.</P>
+<P ALIGN="JUSTIFY">bind interfaces only = yes</P>
+<P ALIGN="JUSTIFY">interfaces = nur lokale Interfaces angeben.</P>
+<P ALIGN="JUSTIFY">Ansonsten empfiehlt es sich ggf. die Start- und Stopskripte f&uuml;r die Runlevel anzulegen/anzupassen und -wenn n&ouml;tig- die diversen Kommandos zur Druckersteuerung lpr command etc. in [global]. Siehe hierzu :</P>
+<P ALIGN="JUSTIFY">http://de.samba.org/samba/ftp/docs/textdocs/Printing.txt</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>4  Netzwerkumgebung = Browse List.</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Der Browsing-Mechanismus in einem Windows-Netzwerk erzeugt das, was man in der Netzwerkumgebung sieht : Eine Liste der (NetBIOS) Computernamen, bekannt als die Browse-List. NetBIOS-Namen d&uuml;rfen maximal 15 Zeichen lang sein, das sechzehnte gibt den jeweiligen Servertyp an. (Nicht in der Browse-List sichtbar.). Die Entstehung der Browse-List beruht drauf – um es unglaublich kurz zu machen – das Rechner beim Einschalten/Booten ihrer Verf&uuml;gbarkeit im lokalen Subnetz bekannt geben, die Liste der Rechner des jeweiligen Subnetzes wiederum von einem Rechner gesammelt – und falls vorhanden – regelm&auml;&szlig;ig mit der zentralen Browse-List, die alle Subnetze umfa&szlig;t abgeglichen wird – die Erreichbarkeit der einzelnen Listenverwalter untereinander beeinflu&szlig;t zum Beispiel WINS. Bei SAMBA kann seit fr&uuml;hesten Versionen das Verhalten im Browsing fest definiert werden.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.1  Allgemeines zu in der Browse-List sichtbaren Objekten:</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Windows 3.x/9x Rechner erscheinen erst in der Browse-List, wenn &quot;Datei- und Druckerfreigabe f&uuml;r Microsoft-Netzwerke&quot; aktiviert installiert wurde. </P>
+<P ALIGN="JUSTIFY">– &Uuml;ber &quot;Gesamtes Netzwerk&quot; sieht man die Liste aller Arbeitsgruppen (Workgroups) und Domains. Dies ist immer eine flache Liste, d.h. Arbeitsgruppen stehen in der Browse List vollkommen gleichberechtigt neben einer Domain – es ist nicht m&ouml;glich eine Arbeitsgruppe innerhalb einer Domain anzulegen. Mit einer Arbeitsgruppe k&ouml;nnen keinerlei Sicherheitsfunktionen assoziiert werden – sie hat ausschlie&szlig;lich f&uuml;r das Browsing Bedeutung. Benutzer/Berechtigungen k&ouml;nnen nur auf Basis der Domain - Zugeh&ouml;rigkeit vergeben werden. Eine Ausnahme hiervon sind sogenannte &quot;Special Groups&quot; wie in &quot;Windows Internet Naming Service (WINS) Architecture  and Capacity Planning&quot; beschrieben, downloadbar als W97-Datei unter http://www.microsoft.com/ntserver/nts/techdetails/techspecs/WINSwp98.asp</P>
+<P ALIGN="JUSTIFY">– NT-Arbeitstationen tauchen – wenn sie Domain-Mitglied sind – ausschlie&szlig;lich in dieser Domain auf, Win 3.x/9x dagegen tauchen stets in &quot;ihrer&quot; Arbeitsgruppe auf, nur wenn deren Name identisch mit der Domain ist, tauchen sie in derselben auf.</P>
+<P ALIGN="JUSTIFY">– Arbeitsgruppen sind nicht Subnetz-&uuml;bergreifend. Konfiguriert man Rechner in 2 Subnetzen mit der gleichen Arbeitsgruppe, so entsteht nicht eine gemeinsame Browse-List, sondern 2 getrennte – es handelt sich um 2 Arbeitsgruppen.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.2  Wie entsteht die Browse-List innerhalb eines Subnetzes?</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Innerhalb eines Subnetzes dadurch, da&szlig; neu gebootete Clients &uuml;ber Rundsendungen ihre Verf&uuml;gbarkeit bekanntgeben, und der Verwalter der Browse List ein beliebiges SAMBA- oder Windows-System den Computernamen der Liste hinzuf&uuml;gt.</P>
+<P ALIGN="JUSTIFY">Folgende Aufgaben k&ouml;nnen Rechner im Browsing &uuml;bernehmen:</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=614>
+<TR><TD WIDTH="31%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Master Browser</FONT></TD>
+<TD WIDTH="69%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Derzeitiger Verwalter der Browse-List in einem Subnetz. Von ihm erhalten die Clients innerhalb desselben Subnetzes die Browse-List.</FONT></TD>
+</TR>
+<TR><TD WIDTH="31%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Backup Browser (nur NT)</FONT></TD>
+<TD WIDTH="69%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Client, der standardm&auml;&szlig;ig alle 12 Minuten vom MB die aktuelle Browse-List erh&auml;lt, diese aber <I>nicht</I> an Clients weitergibt.</FONT></TD>
+</TR>
+<TR><TD WIDTH="31%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Potential Browser</FONT></TD>
+<TD WIDTH="69%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Jeder Client, der kein MB oder BB ist aber zum Verwalter der Browse-List werden kann. Ohne Eingriff praktisch alle Windows-Clients</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Beim Starten der Netzwerkdienste sucht der Client einen Verwalter der Browse-List im lokalen Subnetz, den Master Browser (Hinweis: In der SAMBA Dokumentation ist u.U. noch von LOCAL MASTER BROWSER die Rede, dies wird z.Z. ge&auml;ndert.) – durch eine Rundsendung im lokalen Subnetz gibt der Client seine Verf&uuml;gbarkeit bekannt und wird vom Master Browser in die Browse-List eingef&uuml;gt. Zeit. Werden im Laufe des Arbeitstages keine Rechner neu gestartet o.&auml;. &auml;ndert der Status des Master Browser nicht. D.h. jeder Client, auf dem ein Anwender die Browse List einsehen will, erh&auml;lt diese vom Master Browser. Nimmt man keine Modifikationen an den Clients nach der Installation vor, kann jedes Microsoft Betriebssystem (ab Win 3.x mit TCP/IP) Master Browser werden. In einem kleinen Netzwerk, da&szlig; nur aus einem Subnetz besteht, geschieht die Wahl des Master Browsers in etwa wie folgt:</P>
+<P ALIGN="JUSTIFY">Morgens wird ein Client zuerst eingeschaltet und startet die Netzwerkdienste – und findet keinen aktiven Master Browser. In diesem Fall erzwingt er die &quot;Wahl&quot; des Master Browser die &quot;Browser election&quot; – da in dem Beispiel die anderen Systeme noch nicht gestartet sind, wird es ohne &quot;Gegenstimmen&quot; und alle anderen Systeme finden bereits einen Master Browser vor.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.3  Zur Browser election, zur Wahl des Master Browsers, kommt es wenn folgende F&auml;lle eintreten</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">– Ein Client, der Potential Browser ist, kann den Master Browser nicht erreichen, z.B. wenn dieser abgeschaltet wurde oder anderweitig nicht erreichbar ist. (Ausfall eines Hubs etc.)</P>
+<P ALIGN="JUSTIFY">– Ein Backup Browser versucht die Browse List vom Master Browser zu bekommen, kann diesen jedoch nicht erreichen – damit w&auml;re auch die Funktion des Backup Browsers gekl&auml;rt.</P>
+<P ALIGN="JUSTIFY">– Ein Windows-Client, Server oder SAMBA-System, das als &quot;preferred master browser&quot; konfiguriert ist wird gestartet. (SAMBA = Parameter in [global]. NT-Registry)</P>
+<P ALIGN="JUSTIFY">– Ein SAMBA-System, das als &quot;domain master&quot; konfiguriert wurde oder ein NT PDC wird verf&uuml;gbar.</P>
+<P ALIGN="JUSTIFY">– Man erzwingt mit entsprechenden Utilities eine Wahl.</P>
+<P ALIGN="JUSTIFY">Anhand von bei Windows Systemen festen Wertigkeiten bzw. des Parameters &quot;os level&quot; in [global] bei SAMBA wird festgestellt, wer die Wahl gewinnt. F&uuml;r Windows-Systeme z&auml;hlen sowohl Betriebssystem (NT Server, Workstation, Win 9x, Win 3.x) und augenblicklicher Browser Typ (PDC, WINS-Client, Preferred Master Browser, Augenblicklich Master Browser, Backup Browser). Bei SAMBA kann diese &uuml;ber den Parameter &quot;os level&quot; in [global] fest definiert werden.</P>
+<P ALIGN="JUSTIFY">Die genauen Werte findet man im Artikel &quot;BROWSER ELECTIONS&quot;</P>
+<P ALIGN="JUSTIFY">http://support.microsoft.com/support/ntserver/serviceware/nts40/371jskpq.asp</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Solange ein &quot;preferred master browser&quot;, also ein entsprechendes SAMBA System oder ein NT Rechner sich im selben Subnetz befinden kommt es alle 15 Minuten zu erzwungenen Neuwahlen – ein Status, denn man aufgrund der Netzlast sicher vermeiden m&ouml;chte. D.h. in Subnetzen, in denen zus&auml;tzlich zu einem SAMBA-Host regelm&auml;&szlig;ig NT Workstations- oder Server neu gestartet werden (z.B. Notebooks von mobilen Anwendern etc.) kommt es regelm&auml;&szlig;ig zu Last durch – eigentlich ungewollten – Browser elections – dies betrifft selbstverst&auml;ndlich auch auf Subnetze zu, in denen zu in Browser-Elections niederwertigen 95 und 3.11 Clients ein entsprechendes NT Notebook hinzukommt. SAMBA protokolliert Browser elections und deren Resultat in log.nmb, NT im Ereignislog.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.4  Wie entsteht die Browse-List von Clients mehreren Subnetzen</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Eine die Rechner mehrerer Subnetze umfassende Browse-List f&uuml;hrt der sog. DOMAIN MASTER BROWSER, ein SAMBA-Host mit dem Parameter domain master = yes in [global] oder ein NT PDC. Im Subnetz, in dem der Domain Master steht, darf es bei NT kein weiteres System (ob NT oder SAMBA) geben, das versucht DMB zu werden. Stehen zwei SAMBA Server als DMB’s in einem Subnetz, so &uuml;bernimmt der zuerst verf&uuml;gbare die Rolle des DMB. Der zweite versucht alle 5 Minuten, die Rolle des DMB zu &uuml;bernehmen, tut dies aber nicht solange der andere DMB aktiv ist. Ausschlie&szlig;lich ein NT PDC kann Domain Master Browser werden. Grob gesagt f&uuml;hrt der DMB die Liste seines Subnetzes und erh&auml;lt von erreichbaren Master Browsern regelm&auml;&szlig;ig deren Browse-List – daraus entsteht die gesamte Liste mit allen Computernamen innerhalb der vom DMB verwalteten Dom&auml;ne, und der verf&uuml;gbaren Arbeitsgruppen. Diese Browse – List wiederum wird alle 12 Minuten mit den Master Browsern ausgetauscht, und &uuml;ber diese wiederum kann die Browse-List &uuml;ber die Clients eingesehen werden. Bei SAMBA 2.0.x findet sich im &quot;lock directory&quot; [global] die Datei browse.dat – die Browse-List des jeweiligen SAMBA-Hosts. In einem Netzwerk aus 5 Subnetzen, wovon in einem ein als PDC fungierender SAMBA-Host und keine weiteren NT PDCs stehen, l&auml;uft das Browsing in etwa wie folgt ab – sofern sich alle Rechner erreichen k&ouml;nnen, wie im Abschnitt &quot;Namensaufl&ouml;sung im Windows-Netzwerk&quot;:</P>
+<P ALIGN="JUSTIFY">Der SAMBA-Host wird nie abgeschaltet, s&auml;mtliche anderen Rechner sind Arbeitsplatz PCs und werden am Ende des Arbeitstages ausgeschaltet. Als DMB f&uuml;hrt der SAMBA-Host permanent die Browse-List, werden Clients in seinem Subnetz eingeschaltet werden sie der Browse-List hinzugef&uuml;gt – auch wenn elections stattfinden, k&ouml;nnen die Clients nicht gewinnen. In allen anderen Subnetzen finden beim Start der Clients ebenfalls entsprechende elections statt.</P>
+<P ALIGN="JUSTIFY">Sobald in jedem Subnetz ein Master Browser aktiv ist, und seine Browse-List mit der des DMB’s ausgetauscht hat, werden die Rechner im Subnetzes dieses Master Browsers f&uuml;r die Clients im Subnetz des DMB’s sichtbar – in den anderen Subnetzen erst, wenn auch dort ein Master Browser gew&auml;hlt wurde und seine Browse-List mit der des DMB’s ausgetauscht hat. Bricht die Verbindung zwischen Master Browser und DMB zusammen, sehen die Clients in allen Subnetzen – auch dem betroffenen – dies erst, wenn der Verbindungsversuch des Master Browsers fehlschl&auml;gt.</P>
+<P ALIGN="JUSTIFY">Wird ein Client abgeschaltet bzw. st&uuml;rzt ab, wird er nicht sofort aus der Browse-List aller Clients entfernt, erst wenn er aus der Liste des Master Browsers in seinem lokalen Subnetz entfernt wurde und dieser seinen Browse-Listen Abgleich mit dem DMB hinter sich gebracht. Je nach Gr&ouml;&szlig;e/Aufbau des Windows-Netzwerkes kann dies bis zu 45 Minuten dauern. Falls in den einzelnen Subnetzen Browser elections stattfinden, kommt es nach der Wahl wieder zu einem Abgleich der Browse-Listen zwischen Master-Browser und DMB – so da&szlig; solche Vorg&auml;nge ohne entsprechende &Uuml;berwachung (Log-Dateien, Tools, Sniffer-Programme) komplett verborgen bleiben.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.5  Browsing-Probleme und L&ouml;sungen</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Windows Client mit mehreren Netzwerk Protokollen (z.B. TCP/IP und IPX/SPX mit NetBIOS &uuml;ber IPX/SPX) aktiv sorgen daf&uuml;r, da&szlig; die election des Master Browser auf allen &quot;NetBIOS-Interfaces&quot; des Clients ausgef&uuml;hrt wird – gewinnt ein solches &quot;Interfaces&quot; bedeutet dies, das die Browse List nur f&uuml;r Clients die IPX/SPX mit NetBIOS Unterst&uuml;tzung installiert haben erreichbar ist. Deswegen empfiehlt es sich, mehrere Protokolle nur zu installieren, wenn dies auch tats&auml;chlich n&ouml;tig ist (z.B. Novell 3.x Server im Netz) oder man verhindert &uuml;ber entsprechende Modifikationen in der Registry des Clients (betrifft nur Windows)</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.6  Systeme mit mehreren IP-Adressen/Netzkarten</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">NetBIOS- Sessions &uuml;ber TCP/IP ben&uuml;tzen stets nur jeweils eine IP-Adresse. (Bzw. eine MAC Adresse, falls auf einem Windows-System NetBIOS Unterst&uuml;tzung f&uuml;r IPX/SPX aktiv ist.)</P>
+<P ALIGN="JUSTIFY">Der Browser Dienst eines NT-Servers erstellt f&uuml;r JEDE Netzkarte und Protokollkombination eine separate Browse-List. Jeder Browser-Client im selben Subnetz und alle Master Browser erhalten somit nur die Browse-List des Protokolls und der Netzkarte, &uuml;ber die sie mit dem DMB Kontakt aufnehmen. Der DMB verbindet sich ebenfalls mit Master Browser nur &uuml;ber eine IP-Adresse – d.h. er erh&auml;lt die Liste die der Browser-Dienst des Master-Browsers &uuml;ber die jew. Netzkarte/IP-Adresse aufgebaut hat. Damit kann eine Gesamt-Browse-Liste des jeweiligen Netzwerkes nicht entstehen, kein Client erh&auml;lt die gesamte Liste aller Computer- und Arbeitsgruppennamen.</P>
+<P ALIGN="JUSTIFY">Diese Informationen beruhen auf dem Artikel Q19611</P>
+<P ALIGN="JUSTIFY">http://support.microsoft.com/support/kb/articles/q191/6/11.asp</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Laut der Manpage zu SMB.CONF funktioniert bei korrekter Angabe der IP-Adressen/Subnetz-Masken &uuml;ber den Parameter &quot;interfaces&quot; in [global] &quot;properly&quot; – so z.B.</P>
+<P ALIGN="JUSTIFY">interfaces = 192.168.2.10/255.255.255.0 192.168.3.10/255.255.255.0</P>
+<P ALIGN="JUSTIFY">Ein SAMBA-Host sollte also den entsprechenden Beschr&auml;nkungen nicht unterliegen – N&auml;here Informationen habe ich allerdings z. Z. nicht (wird verbessert)</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.7  Voraussetzungen f</FONT><FONT FACE="Normal Text" SIZE=4>&uuml;</FONT><FONT FACE="Futura Md BT" SIZE=4>r funktionierendes Subnetz&uuml;bergreifendes-Browsing</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Alle Master Browser m&uuml;ssen die IP-Adresse des Domain Master Browsers kennen/aufl&ouml;sen k&ouml;nnen. Dazu gibt es zwei M&ouml;glichkeiten:</P>
+<P ALIGN="JUSTIFY">(1) Lokale LMHOSTS Dateien auf den Master Browsern, in denen die IP-Adresse des Domain Master Browser steht: (Bei Windows 3.x/9x im Windows-Verzeichnis, bei Windows NT im NT-Verzeichnis\system32\drivers\etc\ )</P>
+<P ALIGN="JUSTIFY">IP-Adresse Computername  #PRE  #DOM:Dom&auml;ne</P>
+<P ALIGN="JUSTIFY">&Uuml;ber #DOM:Domainname wird dem jew. Master Browser der Domain Master Browser zugewiesen.</P>
+<P ALIGN="JUSTIFY">#PRE l&auml;dt den Computernamen beim Start in den lokalen NetBIOS-Namenscache.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">(2) Betreiben eines WINS-Server. Ein NetBIOS-Name Server. Grob gesagt ein DNS-Server, nur werden NetBIOS-Computernamen ausgewertet und die Zuordnung/Computername IP-Adresse dynamisch vorgenommen. &Uuml;ber WINS erh&auml;lt ein Master Browser die IP-Adresse des Domain Master Browsers. Domain Master Browser erhalten &uuml;ber WINS die Listen weiterer, verf&uuml;gbarer NT-Dom&auml;nen. Siehe WINS &amp; SAMBA.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.7  Utilities zum &Uuml;berwachen des Browsings</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Richtet man eine Anfrage smbclient -L Computername an einen Master oder Domain – Master Browser, so erh&auml;lt man auch dessen aktuelle Browse-List. F&uuml;r NT gibt es zwei weitere Utilities: browmon &amp; browstat aus dem Windows NT resource-Kit (Server) (Topic: Network Diag Tools, im Verzeichnis \netdiag\) Browstat gibt hierbei praktische alle Informationen &uuml;ber Computer im Windows-Netzwerk aus, sowohl die Funktion innerhalb einer NT Dom&auml;ne (PDC/BDC) als auch den aktuellen Browser-Status.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.8  Konfiguration des Browser-Verhaltens von Windows-Clients</P>
+</FONT><FONT FACE="Futura Md BT"><P>4.8.1  Windows 3.11: Sollte nie Master Browser werden (es gibt eine Verz&ouml;gerung beim Abfragen der Liste)</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>SYSTEM.INI, Abschnitt [networks]:</P>
+<P>MantainServerList = no</P>
+<P>PasswordCaching = no&#9;(Schaltet das lokale Caching von Pa</FONT><FONT FACE="Normal Text" SIZE=2>&szlig;</FONT><FONT FACE="Courier New" SIZE=2>w</FONT><FONT FACE="Normal Text" SIZE=2>&ouml;</FONT><FONT FACE="Courier New" SIZE=2>rtern ab)</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>4.8.2  Windows 95/98 &Uuml;ber Eintragungen in der Registry</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Die Eintragungen k&ouml;nnen bequem &uuml;ber Registry-Skripte vorgenommen werden, diese k&ouml;nnen entweder lokal oder &uuml;ber LOGON-Skripte eingelesen werden. Folgendes mu&szlig; dann in einer Textdatei mit der Endung .reg eingef&uuml;gt werden:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>REGEDIT4</P>
+<P>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VxD\VNETSUP]</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>MantainServerList</FONT><FONT FACE="Normal Text" SIZE=2>&quot; </FONT><FONT FACE="Courier New" SIZE=2>= hex:0</P>
+<P>;Zus</FONT><FONT FACE="Normal Text" SIZE=2>&auml;</FONT><FONT FACE="Courier New" SIZE=2>tzlich gleich das Pa</FONT><FONT FACE="Normal Text" SIZE=2>&szlig;</FONT><FONT FACE="Courier New" SIZE=2>wort-Caching abschalten:</P>
+<P>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Network]</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>DisablePwdCaching</FONT><FONT FACE="Normal Text" SIZE=2>&quot; </FONT><FONT FACE="Courier New" SIZE=2>= dword:0000001</P>
+<P>;WINS-Server eintragen, falls vorhanden</P>
+<P>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VxD\MSTCP]</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>NameServer1&quot;:&quot;X.X.X.X</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</P>
+<P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>NameServer2&quot;: &quot;X.X.X.X</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>;Domain-einstellen</P>
+<P>[HKEY_LOCAL_MACHINE\Security\Provider]</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>Container</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>=</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>Domain</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>;Workgroup-einstellen.</P>
+<P>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VxD\VNETSUP]</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>Workgroup</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>=</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>domain&quot;</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>4.8.3  Windows NT 3.5x, Windows NT 4.0: Hier k&ouml;nnen ebenfalls Registry-Skripte angelegt werden</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Browser\Parameters</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>MaintainServerList</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>=</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>NO</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Browser\Parameters</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>IsDomainMaster</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>=</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>NO</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>;Computersuchdienst (Computerbrowser) abschalten:</P>
+<P>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Browser\</P>
+</FONT><FONT FACE="Normal Text" SIZE=2><P>&quot;</FONT><FONT FACE="Courier New" SIZE=2>Start</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>=</FONT><FONT FACE="Normal Text" SIZE=2>&quot;</FONT><FONT FACE="Courier New" SIZE=2>REG_DWORD4]</P>
+</FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Das Abschalten des Computersuchdienstes hat nicht zur Folge, da&szlig; der Client nicht mehr am Browsing teilnehmen kann – jedoch nur passiv als Browse-Client.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>4.9  Browsing Konfiguration f&uuml;r SAMBA</P>
+</FONT><FONT FACE="Futura Md BT"><P>4.9.1  Samba als Domain Master Browser</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>preferred master = yes</P>
+<P>local master = yes</P>
+<P>domain master = yes</P>
+<P>os level = 64</P>
+</FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">(Kein NT PDC derselben Dom&auml;ne im Netzwerk)</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>4.9.2  Samba als Master Browser eines Subnetzes</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>preferred master = yes</P>
+<P>local master = yes</P>
+<P>domain master = no</P>
+<P>os level = 64</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>4.9.3  Samba soll nur passiv am Browsing teilnehmen</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>preferred master = no</P>
+<P>local master = no</P>
+<P>domain master = no</P>
+<P>os level = 0</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>4.9.4  Samba in der Browsing List nicht sichtbar</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>browseable = no</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>4.9.5  Erreichbarkeit WINS-Server gew&auml;hrleisten (falls vorhanden)</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>wins server = X.X.X.X</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>4.9.6  Oder Samba als WINS-Server</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>wins support = yes</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>5  Empfehlungen f&uuml;r Browsing-Konfiguration</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Da Browsing untrennbar mit der Netzwerktopologie verkn&uuml;pft ist, d.h. mit der Konfiguration der einzelnen Subnetze, diese eher selten mit den realen Abteilungen/Gruppen/Projekteams &uuml;bereinstimmen, die Arbeitsgruppen keinerlei Funktionen au&szlig;erhalb des Browsings haben und zus&auml;tzlich die Browser-List, die zwischen DMB und MB ausgetauscht wird, vergr&ouml;&szlig;ert halte ich das anlegen von Arbeitsgruppen in einem Netzwerk mit SAMBA als PDC oder Anbieter von Netlogon-Skripten f&uuml;r unn&ouml;tigen Aufwand – da eventuell vorhandene NT Workstations ohnehin nur in &quot;ihrer&quot; Dom&auml;ne auftauchen. Zudem kann es von Vorteil sein, die Anwender nicht zu ermutigen, Dateien wahllos zwischen Servern und PCs zu verteilen – oder gar sensitive Daten auf den eigenen PCs f&uuml;r alle freigeben. Die Entscheidung h&auml;ngt letztlich davon ab, ob man Peer-to-Peer Funktionalit&auml;t nutzen m&ouml;chte : Selbst in diesem Fall empfiehlt es sich aufgrund der vor allem in gro&szlig;en Netzen entstehenden Last durch den Abgleich der Browse-Listen nicht auf allen Win 3.x/9x Rechnern die Datei- und Druckerfreigabe zu aktivieren.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>5.1  Soll eine Subnetz&uuml;bergreifende Browse-List zur Verf&uuml;gung stehen, empfiehlt sich folgendes Vorgehen</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">– Einen Domain Master Browser konfigurieren.</P>
+<P ALIGN="JUSTIFY">– Pro Subnetz EIN System als &quot;preferred&quot; Master Browser konfigurieren, zus&auml;tzlich sorgt man daf&uuml;r, das keine weiteren Rechner im lokalen Subnetz browser elections ausl&ouml;sen.</P>
+<P ALIGN="JUSTIFY">– smbclient -L bzw. browmon/browstat Utility aus dem Resource Kit verwenden, um unerw</FONT><FONT FACE="Normal Text" COLOR="#000000">&uuml;</FONT><FONT COLOR="#000000">nschte Local Master Browser zu finden. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Weitere Informationen zum Browsing :</P>
+</FONT><P ALIGN="JUSTIFY"><A HREF="http://de.samba.org/samba/ftp/docs/textdocs/BROWSING.txt">http://de.samba.org/samba/ftp/docs/textdocs/BROWSING.txt</A></P>
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">http://de.samba.org/samba/ftp/docs/textdocs/BROWSING-Config.txt</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Netzlast (u.a. durch Browsing) im NT – Netzwerk minimieren :</P>
+<P ALIGN="JUSTIFY">http://support.microsoft.com/support/kb/articles/q142/6/92.asp</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>6  Namensaufl</FONT><FONT FACE="Normal Text" SIZE=5>&ouml;</FONT><FONT FACE="Futura Md BT" SIZE=5>sung im Windows–Netzwerk</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Um Freigaben eines SAMBA-Server nutzen k&ouml;nnen, mu&szlig; der Client vom Computernamen des SAMBA-Hosts irgendwie zu der IP-Adresse des Servers kommen. Da es sich hierbei um einen NetBIOS-Namen handelt, mu&szlig; man sich um die Namensaufl&ouml;sung im Windows-Netzwerk k&uuml;mmern – nur Windows NT 4.0 Systeme k&ouml;nnen &quot;vollqualifizierte&quot; DNS Namen zur Namensaufl&ouml;sung f&uuml;r Netzwerkresourcen verwenden. Die &quot;net&quot;-Kommandos von Win 3.x/9x unterst&uuml;tzen keine DNS-Namen.</P>
+<P ALIGN="JUSTIFY">Will man keinen SAMBA-Server als WINS-Server verwenden, kann man &uuml;ber LMHOSTS-Dateien Computernamen zuordnen; &uuml;ber LOGON-Skripte k&ouml;nnen diese Up-to-Date gehalten werden. LMHOSTS Dateien kennen mehrere Optionen, auch zus&auml;tzlich die LMHOSTS-Datei eines anderen NT-Servers zu verwenden – unter Windows NT 4.0 findet man im NT-Verzeichnis\system32\drivers\etc\ eine Datei LMHOSTS.SAM mit Beispielen.</P>
+<P ALIGN="JUSTIFY">WINS: Zu WINS existiert ein umfangreiches Whitepaper von Microsoft, das auch auf die Verwendung von LMHOSTS-Dateien, WINS-Replikationsschemen eingeht:</P>
+<P ALIGN="JUSTIFY">http://www.microsoft.com/ntserver/nts/techdetails/techspecs/WINSwp98.asp</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Deswegen gehe ich folgenden eher auf die SAMBA-WINS-Funktionalit&auml;t ein.</P>
+<P ALIGN="JUSTIFY">Die WINS-Datenbank (wins.dat im Samba lock-directory) ist eine dynamische NetBIOS-Namen-Datenbank. Clients (SAMBA/Windows), bei denen WINS zur Namensaufl&ouml;sung verwendet wird, melden sich nach dem Start der Netzdienste (nmbd bei SAMBA) am WINS-Server und werden in die Datenbank eingetragen – sofern sich nicht bereits ein andere Client unter dem selben Namen eingetragen hat. Beim sauberen herunterfahren wird der WINS-Server angewiesen, den Computernamen wieder freizugeben. Nmbd kann diese Funktionen mit der Einschr&auml;nkung &uuml;bernehmen, da&szlig; keine Replikation der WINS-Datenbank zwischen einzelnen SAMBA-Servern m&ouml;glich ist.</P>
+<P ALIGN="JUSTIFY">Zwar werden auf jedem Windows-Client 2 WINS-Server (Primary und Secondary) eingetragen, jedoch wird der Secondary WINS-Server nur gefragt, wenn der Primary nicht erreichbar ist. Wenn der Primary WINS-Server einen Namen nicht einer IP-Adresse zuordnen, schl&auml;gt die Aufl&ouml;sung fehl, der Client fragt den Secondary WINS-Server nicht.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Um SAMBA als WINS – Server zu nutzen, reicht es aus </P>
+<P ALIGN="JUSTIFY">wins support = yes</P>
+<P ALIGN="JUSTIFY">in [global] zu setzen.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Der Parameter wins server = darf dann nicht gesetzt werden, vor allem nicht auf die Adresse des SAMBA-Servers selbst.</P>
+<P ALIGN="JUSTIFY">Anschlie&szlig;end m&uuml;ssen nur noch auf den Clients die entsprechenden WINS – Server gesetzt werden – setzt man bereits LOGON-Skripte ein, k&ouml;nnen so die &Auml;nderungen an der Registry vorgenommen werden, und man ist nicht gezwungen, selbst auf den Clients einzugreifen.</P>
+<P ALIGN="JUSTIFY">Innerhalb einer NT Dom&auml;ne, in der bereits NT WINS Server eingesetzt werden, reicht es aus</P>
+<P ALIGN="JUSTIFY">wins server = auf die IP-Adresse des zust&auml;ndigen WINS-Server zu setzen.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Die Namensaufl&ouml;sung die Windows-Clients vornehmen, beschr&auml;nkt sich jedoch nicht auf eine Methode. Microsoft hat folgende Bezeichnungen f&uuml;r die einzelnen Methoden :</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=614>
+<TR><TD WIDTH="31%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">B-Knoten :</FONT></TD>
+<TD WIDTH="69%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Arbeiten mit Rundsendungen im lokalen Subnetz um Computernamen aufzul&ouml;sen. Clients bei denen weder WINS- noch DNS-Server (NT) eingetragen wurden.</FONT></TD>
+</TR>
+<TR><TD WIDTH="31%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">P-Konten</FONT></TD>
+<TD WIDTH="69%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Benutzen ausschlie&szlig;lich WINS-Server zur Namensaufl&ouml;sung und verwenden keine Rundsendungen falls diese nicht verf&uuml;gbar sind.</FONT></TD>
+</TR>
+<TR><TD WIDTH="31%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">M-Knoten</FONT></TD>
+<TD WIDTH="69%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Benutzen zuerst Rundsendungen im lokalen Subnetz und wenn diese fehlschlagen WINS – Server.</FONT></TD>
+</TR>
+<TR><TD WIDTH="31%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">H-Knoten</FONT></TD>
+<TD WIDTH="69%" VALIGN="TOP">
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY">Hybrid – benutzen zuerst WINS-Server zur Namensaufl&ouml;sung und wenn diese fehlschlagen Rundsendungen.</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT COLOR="#000000"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">– &Uuml;ber das Tool winipcfg.exe kann bei Win 9x (ipconfig /all bei NT) festgestellt werden, um was f&uuml;r einen Knotentyp es sich handelt. Denn Knotentyp kann man nicht direkt setzen, da ein H-Knoten beispielsweise zus&auml;tzliche Informationen ben&ouml;tigt, n&auml;mlich die IP- Adresse des WINS-Servers.</P>
+<P ALIGN="JUSTIFY">– &Uuml;ber nbtstat -r kann bei jedem Windows-Client gepr&uuml;ft werden, wie Namen aufgel&ouml;st wurden.</P>
+<P ALIGN="JUSTIFY">– &Uuml;ber die #PRE Funktion der LMHOSTS k&ouml;nnen Computernamen in den lokalen Cache geladen werden – dieser wird immer abgefragt.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>6.1  Windows 95 als H-Knoten sucht die IP-Adresse eines anderen Rechners</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">1.) Lokaler NetBIOS-Namens-Cache (Abfragen mit nbtstat -c)</P>
+<P ALIGN="JUSTIFY">2.) WINS-Server</P>
+<P ALIGN="JUSTIFY">3.) Broadcast im lokalen Subnetz</P>
+<P ALIGN="JUSTIFY">4.) LMHOSTS</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Eine detaillierte Beschreibung der Windows-Namensaufl&ouml;sungsverfahren findet sich auf :</P>
+<P ALIGN="JUSTIFY">http://msdn.microsoft.com/library/techart/msdn_browse2.htm</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>6.2  Konfiguration der Namensaufl&ouml;sung von SAMBA</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Kontrolliert der Parameter name resolve order in [global]:</P>
+<P ALIGN="JUSTIFY">Name resolve order = wins lmhosts host bcast</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Es wird exakt die Reihenfolge verwendet die man angibt – gibt man eine Methode nicht an, so wird sie nicht benutzt.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Zus&auml;tzliche Informationen zu WINS :</P>
+<P ALIGN="JUSTIFY">– Auch nicht Microsoft-DHCP-Server k&ouml;nnen Microsoft Clients WINS – Server zuweisen.</P>
+<P ALIGN="JUSTIFY">– (NetBIOS name server)</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&Auml;ndern der Reihenfolge der Namensaufl&ouml;ung der versch. Windows Betriebssysteme: Q139270</P>
+<P ALIGN="JUSTIFY">http://support.microsoft.com/support/kb/articles/q139/2/70.asp</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Standard-Knotentyp von Windows Betriebssystemen : Q160177</P>
+<P ALIGN="JUSTIFY">http://support.microsoft.com/support/kb/articles/q160/1/77.asp</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Selbiges in etwa f&uuml;r SAMBA: &quot;Definition of NetBIOS Protocol and Name Resolution Modes&quot;:</P>
+<P ALIGN="JUSTIFY">http://de.samba.org/samba/ftp/docs/textdocs/NetBIOS.txt</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>6.3  DNS statt WINS</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Zwar kann laut Microsoft DNS nicht als Ersatz f&uuml;r WINS dienen, mit folgenden &quot;Einschr&auml;nkungen&quot; geht dies jedoch trotzdem:</P>
+<P ALIGN="JUSTIFY">Windows 3.x/9x Clients k&ouml;nnen in LOGON-Skripten (net use-Befehle) keine vollst&auml;ndigen DNS Namen verwenden. Allerdings k&ouml;nnen sie als DNS Clients Hostnamen der DNS-Domain aufl&ouml;sen, in der sie stehen :</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Der Rechner machine01.dingens.firma.de kann &uuml;ber</P>
+<P ALIGN="JUSTIFY">net use machine02</P>
+<P ALIGN="JUSTIFY">die IP-Adresse des Rechners machine02.firma.de aufl&ouml;sen – sofern deren NetBIOS-Name machine02 ist.</P>
+<P ALIGN="JUSTIFY">D.h. das Wind 3.x/9x Clients stets in einem flachen Namensraum stehen, und Systeme die sie erreichen sollen, ebenfalls in diesem Namensraum stehen m&uuml;ssen – ev. &Uuml;ber einen Alias-Namen.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">– Keine doppelten Hostnamen. (Also </FONT><A HREF="http://www.x.y.de/">www.x.y.de</A><FONT COLOR="#000000"> und </FONT><A HREF="http://www.x.z.de/">www.x.z.de</A><FONT COLOR="#000000"> )</P>
+<P ALIGN="JUSTIFY">Browse-Listen k&ouml;nnen nur noch &uuml;ber LMHOSTS-Dateien zwischen Master &amp; Domain Master – Browsern ausgetauscht werden, d. h. man sollte in einem DNS-only Netzwerk auf die Browse-List verzichten – in dem man den Browser-Dienst jeweils deaktiviert.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>7  Allgemeine Samba-Konfigurations-Parameter</P>
+</FONT><FONT FACE="Futura Md BT" SIZE=4><P>7.1  [global]</P>
+</FONT><FONT FACE="Courier New" SIZE=4><P>;Namen</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>netbios name = (NetBIOS NAME, 15 Zeichen)</P>
+<P>netbios aliases = (Weitere NetBIOS-Namen unter denen der Server bekannt sein soll)</P>
+<P>workgroup = (Eine Arbeitsgruppe oder Domain)</P>
+<P>server string = Kommentar</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Sicherheit und Domain-Optionen.</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>security = (user/server/domain)</P>
+<P>password server = PDC BDC BDC</P>
+<P>guest account = (keine negative UID)</P>
+<P>encrypt passwords = yes / no (bei security=server egal, bei =domain zwingend!)</P>
+
+<P>domain logons =&#9;(yes/no, Win95/98 Anmeldeskripte bieten)</P>
+<P>&#9;&#9;&#9;verlangt eine sichtbare Share namens [netlogon]</P>
+
+<P>logon skript = %U.bat&#9;&#9;;Jeder User hat ein eigenes Logon Script</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Browsing</P>
+</B>
+</FONT><FONT FACE="Courier New" SIZE=2><P>os level = 64&#9;&#9;&#9;# Steuert die Wertigkeit bei Elections</P>
+<P>preferred master = yes/no&#9;# An Elections teilnehmen</P>
+<P>local master = yes/no&#9;&#9;# Master Browser im lokalen Subnetz</P>
+<P>domain master = yes/no&#9;# DMB werden</P>
+<P>browseable = yes/no&#9;&#9;# Sichtbar / unsichtbar</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Drucksystem</P>
+
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>printing = bsd &#9;&#9;&#9;&#9;# Oder AIX, QNX, LPRNG, PLP</P>
+<P>Printcap name = /etc/printcap&#9;&#9;</P>
+<P>load printer = yes&#9;&#9;&#9;# Alle in /etc/printcap eingetragenen Druckerstehen zur<BR>
+ &#9;&#9;&#9;&#9;&#9;Verf&uuml;gung.</P>
+<P>lpq cache time = 0 &#9;&#9;&#9;# Unter LINUX manchmal problematisch</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;IP-Adressen / TCP/IP – Optionen</P>
+
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>interfaces = IP-Adresse/Subnetzmaske&#9;</P>
+<P>bind interfaces only = yes/no&#9;&#9;&#9;#Sollen alle Karten verwendet werden ?</P>
+<P>Socket options = TCP_NODELAY&#9;&#9;# i.d.R. die hilfreichste Socket option</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Namensaufl</FONT><FONT FACE="Normal Text" SIZE=4>&ouml;</FONT><FONT FACE="Courier New" SIZE=4>sung &amp; WINS</P>
+
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>wins support = yes/no&#9;&#9;# Soll nmbd als WINS-Server arbeiten ?</P>
+<P>wins server = IP-Adresse&#9;# Samba kann nicht gleichzeitig WINS-Server sein</P>
+<P>&#9;&#9;&#9;&#9;und einen nutzen.</P>
+<P>dns proxy = yes / no </P>
+<P>wins proxy = yes /no</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Tuning =&gt; Viele Parameter sind defaultm</FONT><FONT FACE="Normal Text" SIZE=4>&auml;&szlig;</FONT><FONT FACE="Courier New" SIZE=4>ig auf yes !</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2>
+<P>max log size = (In Kilobyte)</P>
+<P>read raw = yes</P>
+<P>write raw = yes</P>
+<P>get wdcache = yes</P>
+<P>oplocks = yes </P>
+<P># Soll opportunistisches Locking verwendet werden? Kann per Share abgeschaltet werden – sinnvoll, wenn z.B. ein Verzeichnis zus&auml;tzlich via NFS/FTP genutzt wird.</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Zeichens</FONT><FONT FACE="Normal Text" SIZE=4>&auml;</FONT><FONT FACE="Courier New" SIZE=4>tze etc.</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2>
+<P>Client code page = 850 # Der Default-Wert.</P>
+<P>character set = iso8859-1 # siehe client code page</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Alles in Kleinbuchstaben konvertieren </P>
+
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>default case = lower</P>
+<P>case sensitive = no</P>
+<P>preserve case = no</P>
+<P>short reserve case = no</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>;Die Netlogon-Share</P>
+
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>[netlogon]</P>
+<P>comment = Netlogon-Dienst</P>
+<P>browseable = yes</P>
+<P>public = no</P>
+<P>read only = no</P>
+<P>guest ok = no</P>
+<P># G</FONT><FONT FACE="Normal Text" SIZE=2>&auml;</FONT><FONT FACE="Courier New" SIZE=2>ste sollen Logon-Skripte nicht lesen k</FONT><FONT FACE="Normal Text" SIZE=2>&ouml;</FONT><FONT FACE="Courier New" SIZE=2>nnen</P>
+<P>read only = no</P>
+<P>create mode = 644</P>
+<P># z.B. um einem Admin die </FONT><FONT FACE="Normal Text" SIZE=2>&Auml;</FONT><FONT FACE="Courier New" SIZE=2>nderung der Skripte zu erm</FONT><FONT FACE="Normal Text" SIZE=2>&ouml;</FONT><FONT FACE="Courier New" SIZE=2>glichen. Ohne gleich einen Admin-User, der root-Rechte auf der Share hat festlegen zu m&uuml;ssen.</P>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P>Sonstige Service Parameter</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2>
+<P>dos filetimes = yes</P>
+<P># F</FONT><FONT FACE="Normal Text" SIZE=2>&uuml;</FONT><FONT FACE="Courier New" SIZE=2>r die Funktion manche Programme (Visual C++) n</FONT><FONT FACE="Normal Text" SIZE=2>&ouml;</FONT><FONT FACE="Courier New" SIZE=2>tig.</P>
+
+<P>Admin user = name</P>
+<P># Dieser User hat root-Rechte auf der Share.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>7.2  Logon-Skripte</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>NET USE X: \\SERVER\FREIGABE /YES # Freigabe einem Laufwerk zuordnen.</P>
+<P>NET TIME \\SERVER /SET /YES # Die Uhrzeit nach dem Server stellen.</P>
+<P>CALL X:\SCAN.BAT # Weitere Batch-Scripte auf einem erreichbaren Laufwerk ausf</FONT><FONT FACE="Normal Text" SIZE=2>&uuml;</FONT><FONT FACE="Courier New" SIZE=2>hren.</P>
+<P>NET USE \\HOME # Die Home-Share verbinden. </P>
+</FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>7.3  Beispiel f</FONT><FONT FACE="Normal Text" SIZE=4>&uuml;</FONT><FONT FACE="Futura Md BT" SIZE=4>r ein Teamlaufwerk mit Schreibrechten untereinander</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>[PROJEKT]</P>
+<P>comment = Daten Projekteam</P>
+<P>browseable = yes</P>
+<P>path = /daten1/freigaben/projekt</P>
+<P>admin users = administrator</P>
+<P>read only = no</P>
+<P>public = no</P>
+<P>guest ok = no</P>
+<P>create mode = 770</P>
+<P>directory mode = 770</P>
+<P>dos filetimes = yes</P>
+</FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">Wird f&uuml;r das freigegebene Verzeichnis projekt mit dem GID-Bit versehen, kann man steuern, welche Gruppe Besitzer neu angelegter Verzeichnisse und Dateien auf dieser Freigabe wird. Siehe: man chmod</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=5><P>8  Buntes und Vermischtes</P>
+</FONT><FONT FACE="Futura Md BT" SIZE=4><P>8.1  Allgemein</P>
+</B></FONT><FONT COLOR="#000000"><P ALIGN="JUSTIFY">– Anwendungen, die auf einer Freigabe installiert werden, sollten vorher auf ihre SAMBA-Kombatibilit</FONT><FONT FACE="Normal Text" COLOR="#000000">&auml;</FONT><FONT COLOR="#000000">t getestet werden.</P>
+<P ALIGN="JUSTIFY">– </FONT><FONT FACE="Normal Text" COLOR="#000000">&quot;</FONT><FONT COLOR="#000000">unix passwd snyc</FONT><FONT FACE="Normal Text" COLOR="#000000">&quot;</FONT><FONT COLOR="#000000"> verlangt eine korrekte Angabe eine korrekte Angabe von </FONT><FONT FACE="Normal Text" COLOR="#000000">&quot;</FONT><FONT COLOR="#000000">passwd programm</FONT><FONT FACE="Normal Text" COLOR="#000000">&quot;</FONT><FONT COLOR="#000000">, ansonsten mu&szlig; man auf selbstgeschriebene Skripte zur&uuml;ckgreifen.</P>
+<P ALIGN="JUSTIFY">– Anwender sollten vor einer Umstellung / Neuinstallation trainiert und informiert werden.</P>
+</FONT><B><FONT FACE="Futura Md BT" SIZE=4><P>8.2  Verschiedene Internet-Referenzen</P>
+</B></FONT><P ALIGN="JUSTIFY"><A HREF="http://de.samba.org/">http://de.samba.org</A><U><FONT COLOR="#000080"> </U></FONT><FONT COLOR="#000000">=&gt; deutscher Samba-Mirror</P>
+<P ALIGN="JUSTIFY">http://www.dbg.rt.bw.schule.d/lehrer/ritters/info/linux/linux.htm</P>
+<P ALIGN="JUSTIFY">=&gt; Umfangreiche Zusammenstellung zum Thema LINUX/Samba</P>
+</FONT><P ALIGN="JUSTIFY"><A HREF="http://www.ntfaq.com/">http://www.ntfaq.com</A><U><FONT COLOR="#000080"> </P>
+<P ALIGN="JUSTIFY">http://www.secretagent.com</U></FONT><FONT COLOR="#000000"> =&gt; LINUX &amp; NT-INFOS</P>
+</FONT><U><FONT COLOR="#000080"><P ALIGN="JUSTIFY">http://www.ntinternals.com</P>
+</U></FONT><P ALIGN="JUSTIFY"><A HREF="http://www.unixnt.com/">http://www.unixnt.com</A></P>
+<P ALIGN="JUSTIFY"><A HREF="http://www.rage.net/">http://www.rage.net</A><U><FONT COLOR="#000080"> </U></FONT><FONT COLOR="#000000">=&gt; LINUX-LDAP</P>
+</FONT><B><FONT FACE="Futura Md BT"><P>8.2.1  Informationen &uuml;ber den Einsatz von NT in Firmen</P>
+</B></FONT><P ALIGN="JUSTIFY"><A HREF="http://home.att.net/~tpgugliotta/enterprise.htm">http://home.att.net/~tpgugliotta/enterprise.htm</A></P>
+<B><FONT FACE="Futura Md BT"><P>8.2.2  Aktueller Artikel &uuml;ber SAMBA: (inklusive graphische Darstellung der Benutzerauthentifizierung)</P>
+</B></FONT><P ALIGN="JUSTIFY">http://www.nwc.com/1007/1007ws1.html</P></BODY>
+</HTML>

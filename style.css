@@ -1,0 +1,99 @@
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  background-color: white;
+  background-image:url(images/tux.png);
+  background-repeat:no-repeat;
+  background-position:bottom right;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+.banner {
+  background-image:url(images/banner.png); 
+  background-repeat:no-repeat;
+  background-position:top left;
+  position:absolute;
+  width: 750px;
+  height: 68px;
+  left: 0px;
+  top: 0px; 
+}
+
+.menuspalte {
+  position:absolute;
+  padding-right: 20px;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 150px;
+  background-color: #FFD133;
+}
+
+.menu {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  background-color: #FFD133;
+  line-height: 22px;
+  position:absolute;
+  padding-right: 20px;
+  left: 0px;
+  top: 168px;
+  width: 150px;
+  text-align: right;
+}
+
+.submenu {
+  right: 20px;  
+  text-align: right;
+  position: relative;
+  }
+
+.copyright {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  position:absolute;
+  background-color: #FFD133;
+  width: 170px;
+  bottom: 10px;
+  left: 0px;
+  text-align: center;
+}
+
+.menu a:link, .menu a:visited, .menu a:hover, .menu a:active {
+  text-decoration: none;
+  color: black; }
+
+.menu a:hover, .menu a:active {
+  color: #DD0000; 
+}
+
+.main {
+  margin-left: 170px;
+  height: 100%;
+}
+
+.text {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  padding-right: 10px;
+  padding-left: 40px;
+  padding-top: 110px;
+}
+
+h1 {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #DD0000;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: #DD0000; 
+}
+a:hover, a:active {
+  text-decoration: underline;
+  color: #DD0000; 
+}
+

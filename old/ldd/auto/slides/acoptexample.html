@@ -1,0 +1,29 @@
+<PRE>
+AC_MSG_CHECKING(if help files should be gzip'ed)
+AC_ARG_ENABLE(gzip-help,
+[  --enable-gzip-help      install gzip'ed help files],
+        [use_gzip_help=$enableval],
+        [use_gzip_help=no])
+AC_MSG_RESULT($use_gzip_help)
+
+COMPRESS_PROG=
+COMPRESS_EXT=
+if test $use_gzip_help = yes ; then
+        COMPRESS_PROG=$ac_cv_path_GZIP
+        COMPRESS_EXT=.gz
+fi
+AC_SUBST(COMPRESS_PROG)
+AC_SUBST(COMPRESS_EXT)
+
+AC_MSG_CHECKING(if you want to use zlib for decompression of some gzip files)
+AC_ARG_WITH(zlib,
+[  --with-zlib             use zlib for decompression of some gzip files],
+        [use_zlib=$withval],
+        [use_zlib=no])
+AC_MSG_RESULT($use_zlib)
+
+if test ".$use_zlib" != ".no" ; then
+        AC_DEFINE(USE_ZLIB)
+fi
+</PRE>
+

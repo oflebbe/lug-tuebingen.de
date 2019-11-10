@@ -1,0 +1,30 @@
+<H1>autoconf - Check-Makros</H1>
+
+<P>Der generelle Syntax der folgenden Makros ist immer</P>
+<UL>
+<LI>AC_CHECK_*(which, action-if-found[, action-if-not-found])</LI>
+<LI>AC_*(variable, which [, value-if-not-found [, path]])</LI>
+</UL>
+
+<P>Einzelne Tests:</P>
+
+<UL>
+<LI><EM>AC_PROG_*</EM> f&uuml;r die Programme <EM>AWK, CC, CPP, CXX, F77, INSTALL, LEX, LN_S, RANLIB</EM> und <EM>YACC</EM></LI>
+<LI><EM>AC_PATH_PROG</EM> um den Pfad zu einem nicht explizit unterst&uuml;tzten Programm zu erhalten, z.B. <EM>AC_PATH_PROG(INETD, inetd, /sbin/inetd, $PATH:/sbin:/usr/etc)</EM></LI>
+<LI><EM>AC_CHECK_FILE</EM> um das Vorhandensein eines Files zu testen</LI>
+</UL>
+<UL>
+<LI><EM>AC_CHECK_LIB</EM> um das Vorhandensein einer Library zu testen,
+z.B. <EM>AC_CHECK_LIB(m, fsqrt)</EM></LI>
+<LI><EM>AC_FUNC_*</EM> f&uuml;r Funktionen wie <EM>ALLOCA, MMAP, VFORK</EM></LI>
+<LI><EM>AC_CHECK_FUNC</EM> f&uuml;r nicht explizit unterst&uuml;tzte Funktionen</LI>
+</UL>
+<UL>
+<LI><EM>AC_HEADER_*</EM> f&uuml;r Headerfiles wie <EM>DIRENT, STDC, SYS_WAIT, UNISTD_H</EM></LI>
+<LI><EM>AC_CHECK_HEADER</EM> f&uuml;r nicht explizit behandelte Headerfiles</LI>
+</UL>
+<UL>
+<LI><EM>AC_STRUCT_*</EM> f&uuml;r Structs wie <EM>ST_BLKSIZE, TIMEZONE</EM></LI>
+<LI><EM>AC_TYPE_*</EM> f&uuml;r Typen wie <EM>MODE_T, OFF_T, SIZE_T</EM></LI>
+<LI><EM>AC_CHECK_TYPE</EM> f&uuml;r nicht behandelte Typen aus den System-Headerfiles</LI>
+</UL>

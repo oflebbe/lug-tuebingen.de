@@ -1,0 +1,23 @@
+<PRE>
+#ifdef TERMIO_AND_CURSES
+# ifdef TERMIO_AND_TERMIOS
+#  include &lt;termio.h&gt;
+# else
+#  ifdef HAVE_TERMIOS_H
+#   include &lt;termios.h&gt;
+#  else
+#   ifdef HAVE_TERMIO_H
+#    include &lt;termio.h&gt;
+#   endif /* HAVE_TERMIO_H */
+#  endif /* HAVE_TERMIOS_H */
+# endif /* TERMIO_AND_TERMIOS */
+#endif /* TERMIO_AND_CURSES */
+</PRE>
+<HR>
+<PRE>
+#if HAVE_GETCWD
+    result = getcwd (pathname, LY_MAXPATH);
+#else
+    result = getwd (pathname);
+#endif /* NO_GETCWD */
+</PRE>

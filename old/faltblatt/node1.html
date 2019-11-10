@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//DE">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Hilfe zur Selbsthilfe</TITLE>
+<META NAME="description" CONTENT="Hilfe zur Selbsthilfe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="faltblatt.css">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<B> Next:</B> <A NAME="tex2html16"
+ HREF="node2.html">Hilfe von au&#223;erhalb</A>
+<B> Up:</B> <A NAME="tex2html14"
+ HREF="faltblatt.html">Ihr LINUX-Do-It-Yourself-Ratgeber</A>
+<B> Previous:</B> <A NAME="tex2html8"
+ HREF="faltblatt.html">Ihr LINUX-Do-It-Yourself-Ratgeber</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+Hilfe zur Selbsthilfe</A>
+</H1>
+Wenn mal etwas nicht ganz so klappen sollte, wie Sie es sich vorstellen, k&#246;nnen Sie
+zun&#228;chst versuchen, Ihr Problem sozusagen mit Bordmitteln zu l&#246;sen. Das ist h&#228;ufig
+der schnellste Weg, und die n&#228;chste Klippe ist umso leichter umschifft.
+<DL>
+<DT><STRONG>Help-Option</STRONG>
+<DD>Die meisten Befehle verf&#252;gen &#252;ber eine eingebaute Kurzhilfe, die
+entweder mit der Option <TT>-h</TT> oder <TT>--help</TT> aufgerufen wird. (Beispiel: <TT>gawk -h</TT> - gibt eine Kurzhilfe zum Befehl <TT>gawk</TT> aus.)
+<DT><STRONG>Manpages</STRONG>
+<DD>Mit <TT>man &lt;Befehl&gt;</TT> rufen Sie eine Referenzseite zu einem 
+gewissen <TT>Befehl</TT> auf. Dort sind neben einer kurzen Beschreibung des Befehls
+alle seine Optionen aufgelistet. H&#228;ufig finden sich in der Manpage 
+auch noch einige Beispiele f&#252;r die wichtigsten Anwendungsf&#228;lle. 
+Manpages gibt es nicht nur f&#252;r gew&#246;hnliche Befehle, sondern auch f&#252;r die
+wichtigsten Konfigurationsdateien, Devices sowie - f&#252;r Programmierer 
+interressant - Bibliotheks- und Systemaufrufe.
+(Beispiel: <TT>man man</TT>
+- zeigt die Manpage zum Befehl <TT>man</TT> an.)
+<DT><STRONG><TT>whatis</TT> und <TT>apropos</TT></STRONG>
+<DD>Mit Hilfe von <TT>whatis</TT> und 
+<TT>apropos</TT> k&#246;nnen Sie die Kurzbeschreibungen s&#228;mtlicher Manpages nach 
+einem Schl&#252;sselwort 
+durchsuchen. Das ist vor allem dann n&#252;tzlich, wenn Sie eine bestimmte Aktion
+ausf&#252;hren m&#246;chten, aber nicht den Namen des dazugeh&#246;rigen Befehls kennen. 
+(Beispiel: <TT>whatis -w '*mail*'</TT> sucht nach allen Befehlen, die die 
+Zeichenkette ,,mail`` enthalten; <TT>apropos -w '*mail*'</TT> durchsucht
+zus&#228;tzlich noch alle Kurzbeschreibungen nach ,,mail``.)
+<DT><STRONG>T<SMALL>E</SMALL>Xinfo</STRONG>
+<DD>Die T<SMALL>E</SMALL>Xinfo-Seiten sind eine Alternative zu den traditionellen
+Manpages. Der Standard-Viewer <TT>info</TT> ist gew&#246;hnungsbed&#252;rftig und 
+recht unhandlich zu bedienen. Empfehlenswerter sind beispielsweise der
+graphische Info-Browser <TT>tkinfo</TT>, der info-Modus von Emacs bzw. XEmacs oder
+das info2html-Paket, mit dessen Hilfe T<SMALL>E</SMALL>Xinfo-Seiten in gew&#246;hnliche 
+HTML-Seiten konvertiert werden k&#246;nnen. Beachten Sie bitte: Eine Manpage gibt
+es zu (fast) jedem Standardprogramm. Existiert zus&#228;tzlich noch eine T<SMALL>E</SMALL>X
+info-Datei, so ist darauf gew&#246;hnlich in der Manpage verwiesen. (Beispiel: 
+<TT>info info</TT> - startet die T<SMALL>E</SMALL>Xinfo-Dokumentation zum Befehl <TT>info</TT>.)
+<DT><STRONG><TT>/usr/doc</TT></STRONG>
+<DD>Im Verzeichnis <TT>/usr/doc</TT> ist eine Vielzahl
+weiterer Informationen zu den auf Ihrem System installierten Programmpaketen
+enthalten. Die genaue Verzeichnisstruktur ist von Distribution zu Distribution
+verschieden. Typischerweise liegt zum Beispiel die ausf&#252;hrliche Dokumentation 
+f&#252;r den <TT>sendmail</TT>-Befehl in <TT>/usr/doc/sendmail</TT>, bei einigen
+Distributionen auch in <TT>/usr/doc/packages/sendmail</TT>. Die Palette der
+enthaltenen Informationen ist je nach Umfang des Paketes sehr unterschiedlich
+und reicht von Protokollen der letzten &#196;nderungen &#252;ber Konfigurationsbeispiele
+bis hin zu umfangreichen Tutorien.
+<DT><STRONG>HOWTOs</STRONG>
+<DD>W&#228;hrend die bislang genannten Informationsquellen in erster Linie
+f&#252;r einzelne Befehle gedacht sind, behandeln die sogenannten HOWTOs meist
+allgemeinere Fragen. Sie erl&#228;utern Schritt f&#252;r Schritt die L&#246;sung eines
+bestimmten Problems. F&#252;r den Einsteiger wichtige HOWTOs sind beispielsweise
+das Kernel-HOWTO mit Anleitungen zum Selbstkompilieren eines Linux-Kernels
+oder das German-HOWTO, das erkl&#228;rt, wie die wichtigsten Linux-Programme
+an deutsche Besonderheiten wie Datums- und Papierformat angepa&#223;t werden. Die
+HOWTOs sind f&#252;r gew&#246;hnlich als gezippte Textdateien im Verzeichnis <TT>/usr/doc/HOWTO</TT> gespeichert und k&#246;nnen mit Hilfe von Viewern wie 
+<TT>more</TT>, <TT>less</TT> oder <TT>most</TT> gelesen werden. (Beispiel: <TT>less
+/usr/doc/HOWTO/BootPrompt-HOWTO.gz</TT> - zeigt eine &#220;bersicht der 
+Startparameter des Linux-Kernels an. F&#252;r <TT>more</TT>
+m&#252;ssen Sie den Text mit <TT>gunzip -c /usr/doc/HOWTO/BootPrompt-HOWTO.gz 
+| more</TT> von Hand 
+entpacken.)
+<DT><STRONG>Linux-FAQ</STRONG>
+<DD>FAQs (Frequently Asked Questions - h&#228;ufig gestellte Fragen) 
+sind generell eine beliebte Form der Dokumentation. Die FAQ-Liste zu Linux
+allgemein ist &#252;blicherweise in <TT>/usr/doc/FAQ/Linux-FAQ.gz</TT> zu finden.
+<DT><STRONG>Kernel-Dokumentation</STRONG>
+<DD>Beschreibungen zu Ger&#228;tetreibern, 
+-schnittstellen und weitere Hardware-nahe Informationen werden mit dem
+Quellcode des Linux-Kernels mitgeliefert. Sie sind als Textdateien im 
+Unterverzeichnis <TT>Documentation</TT> der Linux-Quellen (meist in 
+<TT>/usr/src/linux/</TT>) zu finden. F&#252;r sehr
+spezielle Anwendungen ist mitunter ein Blick in eine der README-Dateien
+n&#252;tzlich, die sich in den meisten Unterverzeichnissen befinden.
+</DL><HR>
+<!--Navigation Panel-->
+<B> Next:</B> <A NAME="tex2html16"
+ HREF="node2.html">Hilfe von au&#223;erhalb</A>
+<B> Up:</B> <A NAME="tex2html14"
+ HREF="faltblatt.html">Ihr LINUX-Do-It-Yourself-Ratgeber</A>
+<B> Previous:</B> <A NAME="tex2html8"
+ HREF="faltblatt.html">Ihr LINUX-Do-It-Yourself-Ratgeber</A>
+<!--End of Navigation Panel-->
+<P>
+<ADDRESS>
+<I>Letzte &#196;nderungen von <A HREF="mailto:daniel.kobras@student.uni-tuebingen.de">Daniel Kobras</A></I>
+<BR><I>am 04.01.99</I>
+</ADDRESS>
+</BODY>
+</HTML>

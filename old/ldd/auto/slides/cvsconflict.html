@@ -1,0 +1,33 @@
+<H1>Beispiel f&uuml;r Konflikte</H1>
+
+<P>
+Jemand anderes hat das File hello.c schon ge&auml;ndert:
+</P>
+
+<P>
+mickey:/var/tmp/ldd/hello2$ cvs commit
+<BR>cvs commit: Up-to-date check failed for `hello.c'
+<BR>cvs [commit aborted]: correct above errors first!
+</P>
+
+<P>
+Wir m&uuml;ssen <EM>cvs update</EM> aufrufen:
+</P>
+
+<P>
+<BR>RCS file: /home/richard/Texte/LDD/lddcvs/hello/hello.c,v
+<BR>retrieving revision 1.3
+<BR>retrieving revision 1.4
+<BR>Merging differences between 1.3 and 1.4 into hello.c
+<BR>rcsmerge: warning: conflicts during merge
+<BR>cvs update: conflicts found in hello.c
+<BR>C hello.c
+</P>
+
+<P>
+Aus den drei Sourcefiles <A HREF="cvschello0.html">hello.c vor der &Auml;nderung</A>, <A HREF="cvschello1.html">unserem hello.c</A> und dem <A HREF="cvschello2.html">fremden hello.c</A> macht cvs
+nun <A HREF="cvsconflictbsp.html">dieses<A>. Nach der manuellen
+Behebung der Konflikte mu&szlig; erneut <EM>cvs commit</EM>
+ausgef&uuml;hrt werden.
+</P>
+

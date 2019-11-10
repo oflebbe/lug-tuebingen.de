@@ -1,0 +1,111 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: A4.autoscale.ps
+%%Author: Mike Peter Bretz, Thomas Woerner
+% procedures are like variables
+/inch {72 mul} def
+%
+
+/BeginEPSF {
+  /b4_inc_state save def
+  /dict_count countdictstack def
+  /op_count count 1 sub def
+  userdict begin
+  /showpage {} def
+} bind def
+
+/EndEPSF {
+  count op_count sub {pop} repeat
+  countdictstack dict_count sub
+  {end} repeat
+
+  b4_inc_state restore
+} bind def
+
+
+% pathbox returns the bounding box of the curent path in the current user
+% coordinate system. The results are four real numbers:
+% lower-left x, lower-left y, upper-right x, upper-right y
+newpath clippath pathbbox
+
+% get the values from the stack, define them in variables
+% therefor pull the variable name onto the stack, exchange the last two values
+% on the stack (value,name -> name,value) and finally define the variabe.
+/URy exch def
+/URx exch def
+/LLy exch def
+/LLx exch def
+
+% Sometimes the values for LLx or LLy are negative, as happened with ghostview
+% reset these values to 0
+LLx 0 lt {/LLx 0 def} if
+LLy 0 lt {/LLy 0 def} if
+
+% Set original document dimensions (A4)
+/DocWidth   1684 def
+/DocHeight  2384 def
+/BorderWidth 10 def
+
+% Calculate Width and Height of the page
+/Width URx LLx BorderWidth 2 mul add sub def
+/Height URy LLy BorderWidth 2 mul add sub def
+
+/URX DocWidth def
+/URY DocHeight def
+/LLX 0 def
+/LLY 0 def
+
+LLx LLy translate
+
+/Scale1 Width DocWidth div def
+/Scale2 Height DocHeight div def
+Scale1 Scale2 lt                % if (Scale1 < Scale2)
+{                               % then
+        /Scale Scale1 def       % Scale = Scale1
+}
+{                               % else
+        /Scale Scale2 def       % Scale = Scale2
+} ifelse
+/NewWidth DocWidth Scale mul def
+/NewHeight DocHeight Scale mul def
+
+% Center object on page
+Width NewWidth sub 2 div BorderWidth add
+Height NewHeight sub 2 div BorderWidth add translate
+
+% Scale object
+Scale Scale scale
+
+gsave
+
+% draw frame
+%newpath
+%  LLX LLY moveto
+%  URX LLY lineto
+%  URX URY lineto
+%  LLX URY lineto
+%  closepath
+%stroke
+
+
+BeginEPSF
+
+% fuer A4 595
+/PaperWidth 595 def
+
+DocWidth PaperWidth div DocWidth PaperWidth div scale
+
+
+% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% --
+%
+%
+% komplettes PS file hier einfuegen
+%
+%
+% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% -- %% --
+
+
+EndEPSF
+
+
+grestore
+showpage

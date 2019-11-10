@@ -1,0 +1,85 @@
+<html>
+<head>
+<TITLE>LUGT Linux Day 2000 - Infonst&auml;nde</TITLE>
+</head>
+<body bgcolor="#FFFFFF" link="#dd0000" vlink="aa0000" text="#000000">
+<center>
+<TABLE border=0 cellspacing=4><TR>
+<TD rowspan=2><IMG src=../pics/penguin_m.gif alt="Pingu"></TD>
+<TD align=center valign=middle>
+<FONT size=+3><B>Linux User Group T&uuml;bingen</B></FONT>
+</TD></TR><TR><TD><TABLE><TR>
+<TD bgcolor="#ffe794" valign=middle>&nbsp;<nobr><A HREF="../index.html"><b>Wir &uuml;ber uns</b></A>&nbsp;</nobr></TD>
+<TD bgcolor="#ffe794" valign=middle>&nbsp;<A HREF="../linuxger.html"><nobr><b>Linux in Deutschland</b></A>&nbsp;</nobr></TD>
+<TD bgcolor="#ffe794" valign=middle>&nbsp;<A HREF="../linuxworld.html"><nobr><b>Linux weltweit</b></A>&nbsp;</nobr></TD>
+</TR></TABLE></TD></TR></TABLE>
+<p></CENTER>
+<TABLE border=0 cellspacing=0 width=80%><TR>
+<TD bgcolor=#FFE794 width=36%>
+<NOBR>&nbsp;<B>I<FONT size=-1>NFOST&Auml;NDE</FONT></b></NOBR>
+</TD>
+<TD bgcolor=#FFEAA1 width=8%>&nbsp;</TD>
+<TD bgcolor=#FFEDAD width=8%>&nbsp;</TD>
+<TD bgcolor=#FFF0B7 width=8%>&nbsp;</TD>
+<TD bgcolor=#FFF3C4 width=8%>&nbsp;</TD>
+<TD bgcolor=#FFF6D5 width=8%>&nbsp;</TD>
+<TD bgcolor=#FFF9DD width=8%>&nbsp;</TD>
+<TD bgcolor=#FFFCF2 width=8%>&nbsp;</TD>
+<TD bgcolor=#FFFFFF width=8%>&nbsp;</TD>
+</TR></TABLE><P align=justify>
+Wer sich &uuml;ber Leistung und Vielfalt der Anwendungsm&ouml;glichkeiten
+von Linux informieren will, ist beim Linux Day der LUGT
+genau richtig.   Wir pr&auml;sentieren unter anderem
+<P align=justify>
+<DL>
+<DT><b>Linux f&uuml;r Anwender.</b>
+<DD>Wir zeigen, wie sich Linux sinnvoll
+einsetzen l&auml;&szlig;t zur Bearbeitung von Text und Grafik, 
+f&uuml;r Tabellenkalkulationen und mathematische Berechnungen. Und wir zeigen,
+wie das alles mittels KDE ganz einfach zu bedienen ist.
+<P align=justify>
+<DT><b>Linux am Netz.</b> 
+<DD>Das Angebot reicht von der Netzanbindung via Ethernet,
+ISDN oder Modem &uuml;ber Netzanwendungen wie Mail, News, ftp und WWW bis
+hin zu Sicherheitsfragen im Internet und ihrer L&ouml;sung durch Linux.
+<P align=justify>
+<DT><b>Linux und andere Betriebssysteme.</b>
+<DD>Zu sehen ist, wie Linux mit 
+fremden Systemen wie zum Beispiel Windows 95 und Windows NT zusammenarbeitet. 
+Das betrifft sowohl den Datenaustausch zwischen den Systemen via SAMBA,
+als auch Emulatoren wie wine und uae, mit deren Hilfe Windows- bzw. 
+Amiga-Programme unter Linux betrieben werden k&ouml;nnen..
+<P align=justify>
+<DT><b>Linux f&uuml;r Einsteiger.</b>
+<DD>Wer sich selbst an einer Linux-Installation versucht und zu dem ein- oder
+anderen Problem noch keine L&ouml;sung gefunden hat, kann sich hier wertvolle
+Ratschl&auml;ge holen. Wer´s gar nicht erst versucht hat, kann anderen bei
+der Installation &uuml;ber die Schulter sehen. Und schlie&szlig;lich gibt es
+Tips im Umgang mit dem Dschungel aus man-Pages, info-Seiten, HOWTOs, FAQs und
+docs.
+<P ALIGN=justify>
+<DT><b>Linux f&uuml;r Profis.</b>
+<DD>Wer noch mehr &uuml;ber Linux erfahren
+m&ouml;chte, kann sich vor Ort Tips von Linux-Experten zur Software-Entwicklung
+unter Linux holen, bekommt Linux in Zusammenarbeit mit vielerlei
+Zusatzhardware demonstriert und kann vor allem fragen, fragen, fragen.
+</DL>
+<P ALIGN=justify>
+<!-- Die Installationsschau findet am 5. Juni 1999 von 9 bis 18 Uhr
+im H&ouml;rsaalzentrum, Auf der Morgenstelle, Naturwissenscahftliche
+Institute der Universit&auml;t T&uuml;bingen statt. -->
+<P>
+<hr size=1 noshade>
+<CENTER><A HREF="index.html">Home</A>
+<A HREF="installation.html">Installation</A>
+<A HREF="faq.html">FAQ</A>
+<A HREF="bedingungen.html">Teilnahmebedingungen</A>
+<hr size=2 noshade>
+<TABLE width=100%><TR><TD align=right><font size=-1><i>Letzte &Auml;nderungen am
+13.11.2000<BR>
+von <A href="mailto:michael@nulldevice.de">Michael
+Mayer</A></TD></TR></TABLE>
+</TR></TD></TABLE></CENTER>
+</body>
+</html>
+
