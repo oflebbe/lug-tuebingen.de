@@ -90,7 +90,7 @@ Dienstag, 19. November 2019, 20:00 Uhr:<br/>
 
 
 <!-- /span -->
-<p><b><i>Bitte &uuml;ber diese Seite oder die <a href="http://tuebingen.linux.de/index.php?view=mailingliste">Mailingliste</a> informieren, wann die n&auml;chsten Termine stattfinden.</i></b>
+<p><b><i>Bitte &uuml;ber diese Seite oder die <a href="/index.php?view=mailingliste">Mailingliste</a> informieren, wann die n&auml;chsten Termine stattfinden.</i></b>
 
 <p><b><i>Der Stammtisch findet in der Regel am dritten Dienstag im Monat statt.</i></b>
 
