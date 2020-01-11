@@ -1,4 +1,4 @@
-<?
+<?php
   header('Content-Type: text/html; charset=ISO-8859-1'); 
   if (!isset($_GET['view']) or ($_GET['view']=='')) {
    $_GET['view']='aktuelles';
@@ -28,7 +28,7 @@
 
   <div class="copyright">
     &copy; by Linux User Group Tübingen<br />
-    <?
+    <?php
     if (file_exists("content/".$_GET['view'].".inc.php")) { 
       echo "Letztes Update: ".date("d.m.Y",filemtime("content/".$_GET['view'].".inc.php"));
     }
@@ -39,7 +39,7 @@
 
   <div class="main">
     <div class="text">
-    <?
+    <?php
     if (file_exists("content/".$_GET['view'].".inc.php")) {
       require("content/".$_GET['view'].".inc.php");
     } else {
