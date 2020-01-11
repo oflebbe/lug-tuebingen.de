@@ -2,7 +2,8 @@
 <h1>Aktuelles</h1>
 
 <!--
-    -->
+
+Bis zum nächsten LPD :)
 
 <table style="border: none;" cellspacing="0" cellpadding="0" width="100%">
   <tr>
@@ -50,43 +51,32 @@
     <td style="vertical-align: top;" width="200px"><a href="http://linux-presentation-day.de/"><img src="/content/LPD.logo.300x150.png"/></a></td>
   </tr>
 </table>
-
+-->
 <h3>N&auml;chstes Treffen:</h3>
 
 <p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
-Dienstag, 19. November 2019, 20:00 Uhr:<br/>
+Dienstag, 21. Januar 2020, 20:00 Uhr:<br/>
 <b>Stammtisch (Ort: Marquardtei, Herrenberger Str. 34, im Nebenzimmer Silcherstube)</b></p>
 
 
-<h3>Termine 2019<!-- (noch nicht sicher) -->:</h3>
+<h3>Termine 2020</h3>
 <!-- span style="color:grey" -->
-<p>Dienstag 15. Januar 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 19. Februar 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag <b>eine Woche fr&uuml;her!</b> 12. M&auml;rz 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 16. April 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34) (Osterferien?)</p>
-<p>Dienstag <b>eine Woche fr&uuml;her!</b> 14. Mai 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Samstag,  <b>offiziell</b> 18. Mai
-  2019: <a href="http://www.l-p-d.org/">Linux Presentation
+<p>Dienstag 21. Januar 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 18. Februar 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 17. M&auml;rz 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 21. April 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34) (Osterferien?)</p>
+<p>Dienstag 19. Mai 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<!-- <p>Samstag,  <b>offiziell</b> 18. Mai
+  2020: <a href="http://www.l-p-d.org/">Linux Presentation
     Day</a>  <a href="http://www.linux-presentation-day.de/">(alte
-    Webseite)</a></p>
-<p><b>LPD in T&uuml;bingen eine Woche sp&auml;ter!</b> Samstag 25. Mai 2019 in der
-  Stadtb&uuml;cherei T&uuml;bingen (Nonnengasse 19). Der Termin ist eine Woche sp&auml;ter, weil der Raum in
-  der Bibliothek am 18. anderweitig belegt ist.</p>
-
-<p>Dienstag 18. Juni 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Samstag, 6. Juli 2019: <a href="http://www.tuebix.org/">T&uuml;binger Linuxtag T&Uuml;BIX</a></p>
-<p>Dienstag 16. Juli 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 20. August 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 17. September 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 15. Oktober 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-
-<p>Samstag,  16. November 2019: <a href="http://www.l-p-d.org/">Linux Presentation Day</a>  <a href="http://www.linux-presentation-day.de/">(alte Webseite)</a></p>
-
-<p><b>LPD in T&uuml;bingen eine Woche sp&auml;ter!</b> Samstag 23. November 2019 in der
-  Stadtb&uuml;cherei T&uuml;bingen (Nonnengasse 19). Der Termin ist eine Woche sp&auml;ter, weil der Raum in
-  der Bibliothek am 16. anderweitig belegt ist.</p>
-<p>Dienstag 19. November 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 17. Dezember 2019, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+    Webseite)</a></p>-->
+<p>Dienstag 16. Juni 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 21. Juli 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 18. August 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 15. September 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 20. Oktober 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 17. November 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 15. Dezember 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 
 
 <!-- /span -->
