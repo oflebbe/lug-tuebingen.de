@@ -4,7 +4,7 @@ body {
   background-color: white;
   background-image:url(images/tux.png);
   background-repeat:no-repeat;
-  background-position:bottom right;
+  background-position:top right;
   margin: 0px;
   padding: 0px;
   height: 100%;
