@@ -21,6 +21,7 @@
       <a href="<?=$_SERVER['PHP_SELF']?>?view=treffen">Treffen</a> <br />
       <a href="<?=$_SERVER['PHP_SELF']?>?view=vortraege">Vorträge</a> <br />
       <a href="<?=$_SERVER['PHP_SELF']?>?view=historisches">Historisches</a> <br />
+      <a href="<?=$_SERVER['PHP_SELF']?>?view=nachbarn">Unsere Nachbarn</a> <br />
       <a href="<?=$_SERVER['PHP_SELF']?>?view=kontakt">Kontakt</a> <br />
     </div>
   </div>

@@ -94,10 +94,3 @@ Dienstag, 19. November 2019, 20:00 Uhr:<br/>
 
 <p><b><i>Der Stammtisch findet in der Regel am dritten Dienstag im Monat statt.</i></b>
 
-
-<h3>Unsere Nachbarn</h3>
-
-<p>LUG Reutlingen                            <a href="http://www.lug-reutlingen.de"> www.lug-reutlingen.de</a></p>
-<p>Linux Stammtisch im G&auml;u (Herrenberg) <a href="http://www.listig.org"> www.listig.org</a></p>
-<p>PC-Treff B&ouml;blingen                   <a href="http://www.pc-treff-bb.de"> www.pc-treff-bb.de</a></p>
-<p>Verzeichnis der                           <a href="http://www.linuxuser.de/LUG"> Linux-Usergroups</a> im deutschen Sprachraum bei Linux Magazin </p>
