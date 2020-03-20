@@ -52,10 +52,29 @@ Bis zum nächsten LPD :)
   </tr>
 </table>
 -->
+<h3>Stammtisch in Zeiten von zu vielen Corona-Viren</h3>
+
+<p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
+  Der Stammtisch im M&auml;rz hat nur virtuell stattgefunden. Die Teilnehmer
+  waren per Webbrowser/Videostreaming mit Jitsi [1] verbunden. Die
+  Zugangsdaten wurden vorher auf der
+  <a href="https://www.lug-tuebingen.de/index.php?view=mailingliste">Mailing Liste</a>
+  kund getan.
+</p>
+<p>
+  Vermutlich wird das erst mal so bleiben.
+</p>
+<p>
+  Bleibt zu Hause und bleibt gesund!
+</p>
+<p>
+[1] <a href="https://jitsi.org/what-is-jitsi/">About Jitsi</a>
+</p>
+
 <h3>N&auml;chstes Treffen:</h3>
 
 <p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
-Dienstag, 18. Februar 2020, 20:00 Uhr:<br/>
+Dienstag, 21. April 2020, 20:00 Uhr:<br/>
 <b>Stammtisch (Ort: Marquardtei, Herrenberger Str. 34, im Nebenzimmer Silcherstube)</b></p>
 
 
