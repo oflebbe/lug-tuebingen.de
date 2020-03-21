@@ -65,7 +65,7 @@ Dienstag, 18. Februar 2020, 20:00 Uhr:<br/>
 <p>Dienstag 18. Februar 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 17. M&auml;rz 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 21. April 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34) (Osterferien?)</p>
-<p>Samstag  16. Mai 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.1</a>, Stadtbibliothek Tübingen</p>
+<p>Samstag  16. Mai 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.1</a>, Stadtbibliothek T&uuml;bingen</p>
 <p>Dienstag 19. Mai 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 16. Juni 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 21. Juli 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
@@ -73,7 +73,7 @@ Dienstag, 18. Februar 2020, 20:00 Uhr:<br/>
 <p>Dienstag 15. September 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 20. Oktober 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 17. November 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Samstag  21. November 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.2</a>, Stadtbibliothek Tübingen</p>
+<p>Samstag  21. November 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.2</a>, Stadtbibliothek T&uuml;bingen</p>
 <p>Dienstag 15. Dezember 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 
 
