@@ -73,9 +73,18 @@ Bis zum nächsten LPD :)
 
 <h3>N&auml;chstes Treffen:</h3>
 
+<!--
 <p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
 Dienstag, 21. April 2020, 20:00 Uhr:<br/>
 <b>Stammtisch (Ort: Marquardtei, Herrenberger Str. 34, im Nebenzimmer Silcherstube)</b></p>
+-->
+<p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
+Termin unklar<br/>
+<b>wie lange auch immer es dauert...</b></p>
+
+<p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
+Linux Presentation Day 2020.1 (16.5.)<br/>
+<b>Ist ebenfalls abgesagt!</b></p>
 
 
 <h3>Termine 2020</h3>
@@ -84,7 +93,7 @@ Dienstag, 21. April 2020, 20:00 Uhr:<br/>
 <p>Dienstag 18. Februar 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 17. M&auml;rz 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 21. April 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34) (Osterferien?)</p>
-<p>Samstag  16. Mai 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.1</a>, Stadtbibliothek T&uuml;bingen</p>
+<p><b>Abgesagt!</b> Samstag  16. Mai 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.1</a>, Stadtbibliothek T&uuml;bingen</p>
 <p>Dienstag 19. Mai 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 16. Juni 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
 <p>Dienstag 21. Juli 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
