@@ -52,23 +52,25 @@ Bis zum nächsten LPD :)
   </tr>
 </table>
 -->
-<h3>Stammtisch in Zeiten von zu vielen Corona-Viren</h3>
+<h3>Stammtisch in Zeiten erh&ouml;hter mikro-biologischer Aktivit&auml;t</h3>
 
-<p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
-  Der Stammtisch im M&auml;rz hat nur virtuell stattgefunden. Die Teilnehmer
-  waren per Webbrowser/Videostreaming mit Jitsi [1] verbunden. Die
-  Zugangsdaten wurden vorher auf der
-  <a href="https://www.lug-tuebingen.de/index.php?view=mailingliste">Mailing Liste</a>
-  kund getan.
+<p>
+  Liebe Leute!
 </p>
 <p>
-  Vermutlich wird das erst mal so bleiben.
+  Trotz alledem ein Gutes und v.a. gesundes Neues Jahr 2021! M&ouml;ge die Kreativit&auml;t
+  mit Euch sein und viele lustige / n&uuml;tzliche / sch&ouml;ne Momente und Dinge erschaffen!
+</p>
+<p>
+  Der Stammtisch hat ab März 2020 nur unregelmäßig stattgefunden, z.T. virtuell,
+  z.T. im Au&szlig;enbereich des Cafe Coyote im Westbahnhof. Vermutlich wird das
+  Jahr 2021 ungef&auml;hr so ungem&uuml;tlich weitergehen, wenigstens bis im Sommer.
+  Daher gilt: Nichts ist gewisser als das  Ungewisse! Also vorher auf der mailing Liste
+  lesen/anfragen:
+  <a href="https://www.lug-tuebingen.de/index.php?view=mailingliste">Mailing Liste</a>
 </p>
 <p>
   Bleibt zu Hause und bleibt gesund!
-</p>
-<p>
-[1] <a href="https://jitsi.org/what-is-jitsi/">About Jitsi</a>
 </p>
 
 <h3>N&auml;chstes Treffen:</h3>
@@ -79,34 +81,29 @@ Dienstag, 21. April 2020, 20:00 Uhr:<br/>
 <b>Stammtisch (Ort: Marquardtei, Herrenberger Str. 34, im Nebenzimmer Silcherstube)</b></p>
 -->
 <p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
-Termin unklar<br/>
+ungewiss!<br/>
 <b>wie lange auch immer es dauert...</b></p>
 
-<p style="background: #f5f5f5; border: 1px solid #DDD; box-shadow: 3px 3px 0px rgba(0,0,0,.2); padding: 5px;">
-Linux Presentation Day 2020.1 (16.5.)<br/>
-<b>Ist ebenfalls abgesagt!</b></p>
 
-
-<h3>Termine 2020</h3>
+<h3>Termine 2021</h3>
 <!-- span style="color:grey" -->
-<p>Dienstag 21. Januar 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 18. Februar 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 17. M&auml;rz 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 21. April 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34) (Osterferien?)</p>
-<p><b>Abgesagt!</b> Samstag  16. Mai 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.1</a>, Stadtbibliothek T&uuml;bingen</p>
-<p>Dienstag 19. Mai 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 16. Juni 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 21. Juli 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 18. August 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 15. September 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 20. Oktober 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Dienstag 17. November 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
-<p>Samstag  21. November 2020, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.2</a>, Stadtbibliothek T&uuml;bingen</p>
-<p>Dienstag 15. Dezember 2020, 20:00 Uhr: Stammtisch (Ort: Marquardtei, Herrenberger Str. 34)</p>
+<p>Dienstag 19. Januar    2021, 20:00 Uhr: ???</p>
+<p>Dienstag 16. Februar   2021, 20:00 Uhr: ???</p>
+<p>Dienstag 16. M&auml;rz 2021, 20:00 Uhr: ???</p>
+<p>Dienstag 20. April     2021, 20:00 Uhr: ???</p>
+<p>Samstag  15. Mai       2021, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.1</a> ???</p>
+<p>Dienstag 18. Mai       2021, 20:00 Uhr: ???</p>
+<p>Dienstag 15. Juni      2021, 20:00 Uhr: ???</p>
+<p>Dienstag 20. Juli      2021, 20:00 Uhr: ???</p>
+<p>Dienstag 17. August    2021, 20:00 Uhr: ???</p>
+<p>Dienstag 21. September 2021, 20:00 Uhr: ???</p>
+<p>Dienstag 19. Oktober   2021, 20:00 Uhr: ???</p>
+<p>Dienstag 16. November  2021, 20:00 Uhr: ???</p>
+<p>Samstag  20. November  2021, 10:30 Uhr: <a href="http://www.l-p-d.org/">Linux Presentation Day 2020.2</a> ???</p>
+<p>Dienstag 21. Dezember  2021, 20:00 Uhr: ???</p>
 
 
 <!-- /span -->
 <p><b><i>Bitte &uuml;ber diese Seite oder die <a href="/index.php?view=mailingliste">Mailingliste</a> informieren, wann die n&auml;chsten Termine stattfinden.</i></b>
 
 <p><b><i>Der Stammtisch findet in der Regel am dritten Dienstag im Monat statt.</i></b>
-
