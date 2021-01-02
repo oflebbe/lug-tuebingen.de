@@ -62,7 +62,7 @@ Bis zum nächsten LPD :)
   mit Euch sein und viele lustige / n&uuml;tzliche / sch&ouml;ne Momente und Dinge erschaffen!
 </p>
 <p>
-  Der Stammtisch hat ab März 2020 nur unregelmäßig stattgefunden, z.T. virtuell,
+  Der Stammtisch hat ab M&auml;rz 2020 nur unregelm&auml;&szlig;ig stattgefunden, z.T. virtuell,
   z.T. im Au&szlig;enbereich des Cafe Coyote im Westbahnhof. Vermutlich wird das
   Jahr 2021 ungef&auml;hr so ungem&uuml;tlich weitergehen, wenigstens bis im Sommer.
   Daher gilt: Nichts ist gewisser als das  Ungewisse! Also vorher auf der mailing Liste
