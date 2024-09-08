@@ -11,15 +11,15 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_URI}   ^/index\.php$
 RewriteCond %{QUERY_STRING}  ^view=mailingliste$
-RewriteRule ^(.*)$           /mailingliste                        [L,QSD,R=302]
+RewriteRule ^(.*)$           /mailingliste                        [L,QSD,R=301]
 
 RewriteCond %{REQUEST_URI}   ^/index\.php$
 RewriteCond %{QUERY_STRING}  ^view=nachbarn$
-RewriteRule ^(.*)$           /umgebung                            [L,QSD,R=302]
+RewriteRule ^(.*)$           /umgebung                            [L,QSD,R=301]
 
 RewriteCond %{REQUEST_URI}   ^/index\.php$
 RewriteCond %{QUERY_STRING}  ^view=kontakt$
-RewriteRule ^(.*)$           /kontakt                             [L,QSD,R=302]
+RewriteRule ^(.*)$           /kontakt                             [L,QSD,R=301]
 
 RewriteRule ^  -  [E=redict_old_to_new_index:False]
 RewriteCond %{QUERY_STRING}  ^$                                   [OR]
@@ -30,7 +30,7 @@ RewriteRule ^  -  [E=redict_old_to_new_index:True]
 
 RewriteCond %{REQUEST_URI}   ^/index\.php$
 RewriteCond %{ENV:redict_old_to_new_index}  =True
-RewriteRule ^(.*)$           /                                    [L,QSD,R=302]
+RewriteRule ^(.*)$           /                                    [L,QSD,R=301]
 
 # Indicate that the following pages have disappeared
 # (they are still available via git for those that
