@@ -1,54 +1,67 @@
 <?php
-  header('Content-Type: text/html; charset=ISO-8859-1'); 
-  if (!isset($_GET['view']) or ($_GET['view']=='')) {
-   $_GET['view']='aktuelles';
-  }
+
+Header("Content-Security-Policy: default-src 'self';");
+
+function show_html_header($title = "", $description = "", $noIndex = false) {
+?><!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title><?php if (strlen($title) > 0) echo htmlspecialchars($title) . " &ndash; "; ?>Linux User Group TÃ¼bingen</title>
+<link rel="stylesheet" href="/css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php if ($noIndex) { ?><meta name="robots" content="noindex,noarchive"><?php } ?>
+<?php if ($description != "") { ?><meta name="description" content="<?php echo htmlspecialchars($description); ?>"><?php } ?>
+</head>
+<body>
+<div class="lug-logo">
+<a href="/"><img src="/images/tux-vor-dem-hoelderlinturm.png" width="518" height="555" alt="Logo (Der Linux-Pinguin &quot;Tux&quot; vor dem HÃ¶lderlinturm.)"></a>
+</div>
+<div class="header">
+<h1>Linux User Group TÃ¼bingen</h1>
+</div>
+<div class="menu">
+<menu>
+<li><a href="/">Ãœbersicht</a></li>
+<li><a href="/mailingliste">Mailingliste</a></li>
+<li><a href="/umgebung">In der Umgebung</a></li>
+<li><a href="/kontakt">Kontakt</a></li>
+</menu>
+</div>
+<div class="contents">
+<?php if (strlen($title) > 0) { ?>
+<h2><?php echo htmlspecialchars($title); ?></h2>
+<?php
+}
+}
+
+function show_html_footer() {
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">    
-    <link rel="StyleSheet" href="style.css" type="text/css" />
-    <title>Linux User Group Tübingen</title>
-  </head>
-  <body>
-
-  <div class="menuspalte">
-    <div class="menu">
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=aktuelles">Aktuelles</a> <br />
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=wersindwir">Wer sind wir?</a> <br />
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=mailingliste">Mailingliste</a> <br />
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=treffen">Treffen</a> <br />
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=vortraege">Vorträge</a> <br />
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=historisches">Historisches</a> <br />
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=nachbarn">Unsere Nachbarn</a> <br />
-      <a href="<?=$_SERVER['PHP_SELF']?>?view=kontakt">Kontakt</a> <br />
-    </div>
-  </div>
-  <div class="banner"></div>
-
-  <div class="copyright">
-    &copy; by Linux User Group Tübingen<br />
-    <?php
-    if (file_exists("content/".$_GET['view'].".inc.php")) { 
-      echo "Letztes Update: ".date("d.m.Y",filemtime("content/".$_GET['view'].".inc.php"));
-    }
-    ?>
-
-
-  </div>
-
-  <div class="main">
-    <div class="text">
-    <?php
-    if (file_exists("content/".$_GET['view'].".inc.php")) {
-      require("content/".$_GET['view'].".inc.php");
-    } else {
-       echo "<h1>Fehler</h1>\nDie gewünschte Seite wurde nicht gefunden!";
-    }
-    ?>
-    </div>
-  </div>
-
-  </body>
+</div>
+<div class="footer">
+<p>Copyright &copy; <?php if (intval(date("Y"), 10) > 2024) { echo "2024-"; } echo htmlspecialchars(date("Y")) ?> Linux User Group TÃ¼bingen (<a href="/kontakt">Kontakt</a>)</p>
+<p>Logo: &quot;Tux vor dem HÃ¶lderlin Turm&quot; von Chris Laule; Lizenz: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
+</div>
+</body>
 </html>
+<?php
+}
+
+$parts = explode("/", substr($_SERVER["REQUEST_URI"], 1));
+if (count($parts) != 1) {
+    include(dirname(__FILE__) . "/data/404.php");
+    exit(1);
+}
+
+$document = $parts[0];
+if ($document === "" || $document === "index.php")
+    $document = "index";
+
+$document_file = dirname(__FILE__) . "/data/" . $document . ".inc.php";
+
+if ($document == "404" || !file_exists($document_file)) {
+    include(dirname(__FILE__) . "/data/404.php");
+    exit(1);
+}
+
+include($document_file);

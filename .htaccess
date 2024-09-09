@@ -1,1 +1,74 @@
-DirectoryIndex index.php index.html
+RewriteEngine On
+
+########################################################
+# Rewrite URIs of old website (so that previous links
+# don't fail)
+
+# Avoid the fact that this is currently a PHP site,
+# so redirect /index.php (old site) to /. This is
+# not an endless loop because of the END flag in the
+# rule for rewriting everything to /index.php.
+
+RewriteCond %{REQUEST_URI}   ^/index\.php$
+RewriteCond %{QUERY_STRING}  ^view=mailingliste$
+RewriteRule ^(.*)$           /mailingliste                        [L,QSD,R=301]
+
+RewriteCond %{REQUEST_URI}   ^/index\.php$
+RewriteCond %{QUERY_STRING}  ^view=nachbarn$
+RewriteRule ^(.*)$           /umgebung                            [L,QSD,R=301]
+
+RewriteCond %{REQUEST_URI}   ^/index\.php$
+RewriteCond %{QUERY_STRING}  ^view=kontakt$
+RewriteRule ^(.*)$           /kontakt                             [L,QSD,R=301]
+
+RewriteRule ^  -  [E=redict_old_to_new_index:False]
+RewriteCond %{QUERY_STRING}  ^$                                   [OR]
+RewriteCond %{QUERY_STRING}  ^view=aktuelles$                     [OR]
+RewriteCond %{QUERY_STRING}  ^view=wersindwir$                    [OR]
+RewriteCond %{QUERY_STRING}  ^view=treffen$
+RewriteRule ^  -  [E=redict_old_to_new_index:True]
+
+RewriteCond %{REQUEST_URI}   ^/index\.php$
+RewriteCond %{ENV:redict_old_to_new_index}  =True
+RewriteRule ^(.*)$           /                                    [L,QSD,R=301]
+
+# Indicate that the following pages have disappeared
+# (they are still available via git for those that
+# want them). List the files in /files/ individually,
+# because we might want to reuse /files/ at a later
+# point, so don't issue a 410 Gone for the whole
+# subfolder.
+RewriteCond %{REQUEST_URI}   ^/old/.*                                             [OR]
+RewriteCond %{REQUEST_URI}   ^/files/20090304_e\.waelde_spass_mit_forth\.pdf      [OR]
+RewriteCond %{REQUEST_URI}   ^/files/apache_modules\.pdf                          [OR]
+RewriteCond %{REQUEST_URI}   ^/files/CarstenGeckeler\.beamer\.pdf                 [OR]
+RewriteCond %{REQUEST_URI}   ^/files/CarstenGeckeler\.print\.pdf                  [OR]
+RewriteCond %{REQUEST_URI}   ^/files/cvs\.pdf                                     [OR]
+RewriteCond %{REQUEST_URI}   ^/files/engelmann-lyx\.pdf                           [OR]
+RewriteCond %{REQUEST_URI}   ^/files/husel-geckeler-perl-python\.pdf              [OR]
+RewriteCond %{REQUEST_URI}   ^/files/kolab\.pdf                                   [OR]
+RewriteCond %{REQUEST_URI}   ^/files/notensatz\.pdf                               [OR]
+RewriteCond %{REQUEST_URI}   ^/files/oelmann-wlan\.pdf                            [OR]
+RewriteCond %{REQUEST_URI}   ^/files/oelmann-wlan\.sxi                            [OR]
+RewriteCond %{REQUEST_URI}   ^/files/petranek-public-key\.pdf                     [OR]
+RewriteCond %{REQUEST_URI}   ^/files/VDR-gross\.pdf                               [OR]
+RewriteCond %{REQUEST_URI}   ^/files/VDR-klein\.pdf                               [OR]
+RewriteCond %{REQUEST_URI}   ^/files/wine\.pdf
+RewriteRule ^(.*)$           -                                 [G]
+########################################################
+
+########################################################
+# Current website: redirect content to index.php
+# for all URIs so that we have 'speaking' URIs
+# such as / (for the main page), /mailingliste for
+# the mailing list, etc.
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php [QSA,L,END]
+
+RewriteRule ^data/(.*)$ -         [R=404]
+RewriteRule ^events/(.*)$ -       [R=404]
+
+ErrorDocument 404 /404
+########################################################
