@@ -101,11 +101,11 @@ show_html_header("", "Übersicht über die Linux User Group Tübingen");
 <p>Mit dem ÖPNV ist der <a href="https://www.naldo.de/fahrplan/app/trip?formik=destination%3Dde%253A08416%253A12041&amp;lng=de&amp;trip=multiModalitySelected%3Dpt">Westbahnhof</a> entweder mit dem Zug (RB 63 zwischen Herrenberg und Tübingen), oder dem Bus (Linien 11 und 12) zu erreichen. Die Haltestelle heißt Tübingen West, manchmal auch Tübingen Westbahnhof.</p>
 <p>Vor dem Westbahnhof gibt es abends Parkmöglichkeiten für Autos.</p>
 <?php
-if ($next->diff($today)->d == 0) {
+if ($next->diff($today)->days == 0) {
 ?>Der nächste Stammtisch ist <strong>heute</strong>, am <span class="nextdate"><?php echo format_date($next); ?></span>.<?php
-} else if ($next->diff($today)->d == 1) {
+} else if ($next->diff($today)->days == 1) {
 ?>Der nächste Stammtisch ist <strong>morgen</strong>, am <span class="nextdate"><?php echo format_date($next); ?></span>.<?php
-} else if ($next->diff($today)->d == 2) {
+} else if ($next->diff($today)->days == 2) {
 ?>Der nächste Stammtisch ist <strong>übermorgen</strong>, am <span class="nextdate"><?php echo format_date($next); ?></span>.<?php
 } else {
 ?>Der nächste Stammtisch ist am <span class="nextdate"><?php echo format_date($next); ?></span>.<?php
