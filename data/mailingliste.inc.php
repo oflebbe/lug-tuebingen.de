@@ -1,10 +1,10 @@
 <?php show_html_header("Mailingliste", "Informationen zur Mailingliste der Linux User Group Tübingen, inklusive Anleitungen zum An- und Abmelden"); ?>
-<p>Die LUG Tübingen betreibt auch eine Mailingliste, bei der man sich unter <a href="https://listserv.uni-tuebingen.de/mailman/listinfo/lug-tuebingen">https://listserv.uni-tuebingen.de/mailman/listinfo/lug-tuebingen</a> anmelden kann.</p>
+<p>Die LUG Tübingen betreibt eine Mailingliste:</p>
 <p>E-Mails, die an <a href="mailt&#111;:&#108;ug-&#116;uebingen&#64;listserv.uni-tuebingen.de">l&#117;g-tuebingen&#64;l&#105;stserv.uni-tuebingen.de</a> geschickt werden, werden an alle Mitglieder der Mailingliste weiterverteilt. Man sollte Mitglied sein, wenn man dorthin Mails schicken will.</p>
 <p>Im monatlichen Durchschnitt wird etwa eine Mail pro Tag über die Mailingliste geschickt. (Stand: Frühjahr 2024)</p>
 
 <h3>Anmeldung an die Mailingliste</h3>
-<p>Um sich an die Mailingliste anzumelden muss man eine E-Mail an <a href="mailto:lug-tuebingen-subscribe@listserv.uni-tuebingen.de">lug-tuebingen-subscribe@listserv.uni-tuebingen.de</a> schicken.
+<p>Um sich an die Mailingliste anzumelden muss man eine E-Mail an <a href="mailt&#111;:&#108;ug-&#116;uebingen-subscribe&#64;listserv.uni-tuebingen.de">l&#117;g-tuebingen-subscribe&#64;l&#105;stserv.uni-tuebingen.de</a>  schicken.
 Daraufhin erhält man eine Bestätigungs-Email, die einen Link enthält mit einem Code, auf den man klicken kann, um die Anmeldung an die Mailingliste abzuschließen:</p>
 <p><img src="images/mailingliste-anmeldung-bestaetigung-email.png" width="803" height="437" alt="Bildschirmfoto der Bestätigungs-Email nach Ausfüllen des Formulars"></p>
 <p>Wenn man auf diesen Link klickt, wird man auf ein weiteres Formular weitergeleitet, bei dem man die Anmeldung an die Mailingliste endgültig bestätigen kann.</p>
