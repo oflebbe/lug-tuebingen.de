@@ -4,9 +4,8 @@
 <p>Im monatlichen Durchschnitt wird etwa eine Mail pro Tag über die Mailingliste geschickt. (Stand: Frühjahr 2024)</p>
 
 <h3>Anmeldung an die Mailingliste</h3>
-<p>Um sich an die Mailingliste anzumelden sollte man <a href="https://listserv.uni-tuebingen.de/mailman/listinfo/lug-tuebingen">das Anmeldeformular ausfüllen</a>. Die E-Mail-Adresse ist Pflicht. Beispiel:</p>
-<p><img src="images/mailingliste-anmeldung-ausfuellen-beispiel.png" width="845" height="319" alt="Bildschirmfoto eines beispielhaft ausgefüllten Formulars zur Anmeldung"></p>
-<p>Nach dem Abschicken des Formulars erhält man eine Bestätigungs-Email, die einen Link enthält mit einem Code, auf den man klicken kann, um die Anmeldung an die Mailingliste abzuschließen:</p>
+<p>Um sich an die Mailingliste anzumelden muss man eine E-Mail an <a href="mailto:lug-tuebingen-subscribe@listserv.uni-tuebingen.de">lug-tuebingen-subscribe@listserv.uni-tuebingen.de</a> schicken.
+Daraufhin erhält man eine Bestätigungs-Email, die einen Link enthält mit einem Code, auf den man klicken kann, um die Anmeldung an die Mailingliste abzuschließen:</p>
 <p><img src="images/mailingliste-anmeldung-bestaetigung-email.png" width="803" height="437" alt="Bildschirmfoto der Bestätigungs-Email nach Ausfüllen des Formulars"></p>
 <p>Wenn man auf diesen Link klickt, wird man auf ein weiteres Formular weitergeleitet, bei dem man die Anmeldung an die Mailingliste endgültig bestätigen kann.</p>
 <p><img src="images/mailingliste-anmeldung-bestaetigung-webseite.png" width="569" height="168" alt="Bildschirmfoto des Formulars, mit dem man seine Anmeldung an der Mailingliste bestätigt"></p>
